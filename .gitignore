@@ -1,2 +1,2 @@
-;;directories to ignore
-.idea/
+#PyCharm files
+.idea/workspaces.xml
