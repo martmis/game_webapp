@@ -1,77 +1,153 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
-
+<div class="container theme-showcase" role="main">
 {% block content %}
 
 <div class="page-header">
-  <h1>Please fill the form</h1>
+  <h1>Prosimy o szczere i przemyślane odpowiedzi</h1>
 </div>
 
 <form role="form" action="/save" method="post">
-    <h3>Personal data</h3>
-    <div class="form-group">
-        <label for="firstname">Firstname:</label>
-        <input type="text" class="form-control" id="firstname" name="firstname" required>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Dane personalne
+                </h3>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Płeć</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="1">Kobieta
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="2">Mężczyzna
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Grupa wiekowa</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="1">poniżej 15 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="2">16-30 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="3">31-45 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="4">46-60 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="5">powyżej 61 lat
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="education">Wykształcenie:</label>
+                        <select class="form-control" id="education">
+                            <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
+                            <option value="1">podstawowe</option>
+                            <option value="2">zawodowe</option>
+                            <option value="3">średnie</option>
+                            <option value="4">wyższe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Czy jesteś osobą pracującą?</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="job" value="1">Tak
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="job" value="2">Nie
+                        </label>
+                    </div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Poziom zainteresowania grami komputerowymi
+                </h3>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Płeć</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="1">Kobieta
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gender" value="2">Mężczyzna
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Grupa wiekowa</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="1">poniżej 15 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="2">16-30 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="3">31-45 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="4">46-60 lat
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="age" value="5">powyżej 61 lat
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="education">Wykształcenie:</label>
+                        <select class="form-control" id="education">
+                            <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
+                            <option value="1">podstawowe</option>
+                            <option value="2">zawodowe</option>
+                            <option value="3">średnie</option>
+                            <option value="4">wyższe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Czy jesteś osobą pracującą?</label><br>
+                        <label class="radio-inline">
+                          <input type="radio" name="job" value="1">Tak
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="job" value="2">Nie
+                        </label>
+                    </div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        <button type="button" class="btn btn-success">Dalej</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Poziom zainteresowania grami komputerowymi
+                </h3>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="container-fluid">Elo
+                    </div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        <button type="button" class="btn btn-success">Cofnij</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="number" class="form-control" id="age" name="age" min="1" max="100" required>
-    </div>
-    <h3>Employee Job Satisfaction</h3>
-    <div class="form-group">
-      <label for="income">Annual income $:</label>
-      <select class="form-control" id="income" name="income">
-        <option>20</option>
-        <option>50</option>
-        <option>100</option>
-        <option>150</option>
-      </select>
-    </div>
-    <div class="form-group">
-        <label for="satisfaction">Considering everything, how satisfied are you with your job?</label>
-        <input type="number" class="form-control" id="satisfaction" name="satisfaction" min="1" max="5" required>
-    </div>
-    <h3>Programming skills</h3>
-    <b>Rate your proficiency with Python language</b>
-    <div class="form-group">
-        <label class="radio-inline">
-          <input type="radio" name="q1" value="1">1 (Beginner)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q1" value="2">2 (Junior)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q1" value="3" checked>3 (Middle)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q1" value="4">4 (Senior)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q1" value="5">5 (Expert)
-        </label>
-    </div>
-    <b>Rate your proficiency with Flask framework</b>
-    <div class="form-group">
-        <label class="radio-inline">
-          <input type="radio" name="q2" value="1">1 (Beginner)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q2" value="2">2 (Junior)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q2" value="3" checked>3 (Middle)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q2" value="4">4 (Senior)
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="q2" value="5">5 (Expert)
-        </label>
-    </div>
+
 
 
     <button type="submit" class="btn btn-default">Save</button>
@@ -79,3 +155,4 @@
 
 {% endblock %}
 
+</div>
