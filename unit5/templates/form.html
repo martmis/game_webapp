@@ -5,29 +5,35 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Prosimy o szczere i przemyślane odpowiedzi</h1>
+    <h1>"Badanie interakcji społecznych w grach komputerowych"</h1>
+    <h3>Uprzejmie prosimy o szczere i przemyślane odpowiedzi</h3>
 </div>
 
 <form role="form" action="/save" method="post">
 
     <div class="panel-group" id="accordion">
+
         <div class="panel panel-default">
+
             <div class="panel-heading">
                 <h3 class="panel-title">
                     Dane personalne
                 </h3>
             </div>
+
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
+
                     <div class="form-group">
                         <label>Płeć</label><br>
                         <label class="radio-inline">
-                          <input type="radio" name="gender" value="1">Kobieta
+                          <input type="radio" name="gender" value="F">Kobieta
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="gender" value="2">Mężczyzna
+                          <input type="radio" name="gender" value="M">Mężczyzna
                         </label>
-                    </div>
+                    </div><br>
+
                     <div class="form-group">
                         <label for="age">Grupa wiekowa</label><br>
                         <label class="radio-inline">
@@ -45,9 +51,10 @@
                         <label class="radio-inline">
                           <input type="radio" name="age" value="5">powyżej 61 lat
                         </label>
-                    </div>
+                    </div><br>
+
                     <div class="form-group">
-                        <label for="education">Wykształcenie:</label>
+                        <label for="education">Wykształcenie</label>
                         <select class="form-control" id="education">
                             <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
                             <option value="1">podstawowe</option>
@@ -55,32 +62,29 @@
                             <option value="3">średnie</option>
                             <option value="4">wyższe</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Czy jesteś osobą pracującą?</label><br>
-                        <label class="radio-inline">
-                          <input type="radio" name="job" value="1">Tak
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="job" value="2">Nie
-                        </label>
-                    </div>
+                    </div><br>
+
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                         <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
                     </a>
+
                 </div>
             </div>
         </div>
+
         <div class="panel panel-default">
+
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Poziom zainteresowania grami komputerowymi
+                    Ocena stopnia zainteresowania grami komputerowymi
                 </h3>
             </div>
+
             <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
+
                     <div class="form-group">
-                        <label>Czy zwykle zdarza się Panu/Pani grać samemu/samej (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
+                        <label>Czy zwykle grasz z komputerem (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
                         <div class="checkbox">
                             <label>
                               <input type="checkbox" name="single_multi" value="sp">Singleplayer
@@ -91,116 +95,435 @@
                               <input type="checkbox" name="single_multi" value="mp"> Multiplayer
                             </label>
                         </div>
-                    </div>
+                    </div><br>
+
                     <div class="form-group">
-                        <label>JEŚLI MULTI<br>W które z poniższych tytułów zdarza się Panu/Pani grać?</label><br>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="dota">DOTA 2
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="lol"> League of Legends
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="hots"> Heroes of the Storm
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="cs"> gry z serii Counter Strike
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="cod"> gry z serii Call of Duty
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="bf"> gry z serii Battlefield
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="gta"> Grand Theft Auto V
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="fifa"> gry z serii FIFA
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="minecraft"> Minecraft
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="hs"> Hearthstone
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="sc2"> Starcraft 2
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="wow"> World of Warcraft
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="multi_titles" value="other"> Inne
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="education">Wykształcenie:</label>
-                        <select class="form-control" id="education">
-                            <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
-                            <option value="1">podstawowe</option>
-                            <option value="2">zawodowe</option>
-                            <option value="3">średnie</option>
-                            <option value="4">wyższe</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Czy jesteś osobą pracującą?</label><br>
+                        <label for="gametime">Ile średnio przeznaczasz dziennie czasu na granie?</label><br>
                         <label class="radio-inline">
-                          <input type="radio" name="job" value="1">Tak
+                          <input type="radio" name="gametime" value="1">poniżej godziny
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="job" value="2">Nie
+                          <input type="radio" name="gametime" value="2">1-2 godziny
                         </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gametime" value="3">3-4 godziny
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gametime" value="4">5-6 godzin
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="gametime" value="5">7 godzin lub więcej
+                        </label>
+                    </div><br>
+
+                    <div class="div-single"><h1>SINGLE</h1>
+                        <div class="form-group">
+                            <p>Jesteśmy w stanie tu coś wymyślić?</p>
+                        </div>
+                    </div><br>
+
+                    <div class="div-multi"><h1>MULTI</h1>
+                        <div class="form-group">
+                            <label>
+                                Poniżej przedstawiono wybrane tytuły popularnych gier <i>multiplayer</i>.
+                                Proszę zaznaczyć te z nich, w które zdarzyło Ci się zagrać.
+                            </label><br>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="dota">DOTA 2
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="lol"> League of Legends
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="hots"> Heroes of the Storm
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="cs"> gry z serii Counter Strike
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="cod"> gry z serii Call of Duty
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="bf"> gry z serii Battlefield
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="gta"> Grand Theft Auto V
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="fifa"> gry z serii FIFA
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="minecraft"> Minecraft
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="hs"> Hearthstone
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="sc2"> Starcraft 2
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="wow"> World of Warcraft
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="other"> Inne
+                                </label>
+                            </div>
+                        </div><br>
                     </div>
+
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                        <button type="button" class="btn btn-success">Dalej</button>
+                        <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
                     </a>
-                </div>
+
+                 </div>
             </div>
         </div>
+
         <div class="panel panel-default">
+
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Poziom zainteresowania grami komputerowymi
+                    Gry komputerowe a zachowania społeczne
                 </h3>
             </div>
+
             <div id="collapse3" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <div class="container-fluid">Elo
+
+                    <div class="form-group">
+                        <label>
+                            Czy podczas gry komunikujesz się z innymi ludźmi w sposób niezwiązany z daną grą?
+                        </label><br>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="communication" value="true">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="communication" value="false">Nie, raczej skupiam się na grze
+                            </label>
+                        </div>
+                    </div><br>
+
+
+<hr>
+                    <div class="form-group">
+                        <label>Czy zdarzyło Ci się zrezygnować z zajęć, planów lub obowiązków na rzeczy gry?</label><br>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="resign" value="true">Tak
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="resign" value="false">Nie
+                            </label>
+                        </div>
+                    </div><br>
+
+                    <div class="div-resign"><h1>TAK</h1>
+                        <div class="form-group">
+                            <label>Jak często taka sytuacja ma miejsce?</label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="1">rzadziej niż raz w roku
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="2">dwa do sześć razy w roku
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="3">średnio raz na dwa miesiące
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="4">średnio raz w miesiącu
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="5">częściej niż raz w miesiącu
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                Z czego zdarzyło Ci się zrezygnować?
+                            </label><br>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="sport">z aktywności fizycznej
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="family">z czasu spędzonego z rodziną
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="friends">z czasu spędzonego z przyjaciółmi lub znajomymi
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="chores">z obowiązków domowych
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="work">ze szkoły lub pracy
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" name="resign-choice" value="other">inne
+                                </label>
+                            </div>
+                        </div><br>
                     </div>
+<hr>
+
+                    <div class="div-single"><h1>SINGLE</h1>
+                        <div class="form-group">
+                            <p>Jesteśmy w stanie tu coś wymyślić?</p>
+                        </div>
+                    </div><br>
+
+                    <div class="div-multi"><h1>MULTI</h1>
+                        <div class="form-group">
+                            <label>
+                                 Czy zdarzyło Ci się być świadkiem agresywnego zachowania graczy ukierunkowanego na inną osobę lub grupę osób?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="salt" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="salt" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy zdarzyło Ci się w ten sposób krytykować zachowanie lub umiejętności innego gracza?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="salt_self" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="salt_self" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy zdarzyło Ci się być świadkiem uprzykrzania gry przez pojedynczą osobę lub grupę osób
+                                (np. poprzez przeszkadzanie członkom swojej drużyny, celowe wspieranie drużyny przeciwnej)?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="greifing" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="griefing" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy zdarzyło Ci się w ten sposób zachowywać?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="greifing_self" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="griefing_self" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+<hr>
+                        <div class="form-group">
+                            <label>
+                                 Czy należysz do gildii, klanu lub innej społeczności w grze?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="guild" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="guild" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="div-guild"><h1>TAK</h1>
+                            <div class="form-group">
+                                <label>
+                                     Jakie były powody przystąpienia do takiej społeczności?
+                                </label><br>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="guild_why" value="meeting">chęć zawierania nowych znajomości
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="guild_why" value="team">znalezienie kompanów do wspólnej rozgrywki
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="guild_why" value="benefits">otrzymanie benefitów z tytułu członkostwa (np. szybsze zdobywanie doświadczenia)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="guild_why" value="other">inne
+                                    </label>
+                                </div>
+                            </div><br>
+
+                            <div class="form-group">
+                                <label>
+                                     Czy członkowie tej społeczności korzystają z komunikacji głosowej (Skype, Teamspeak, Ventrillo, itp.)
+                                </label><br>
+                                <div class="radio">
+                                    <label>
+                                      <input type="radio" name="teamspeak" value="true">Tak
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                      <input type="radio" name="teamspeak" value="false">Nie
+                                    </label>
+                                </div>
+                            </div><br>
+
+                        </div>
+<hr>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy rozmawiasz z ludźmi poznanymi w grze (czat lub komunikacja głosowa)?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="shyness_factor" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="shyness_factor" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy kontaktujesz się z poznanymi ludźmi poza grą?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="reallife_contact" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="reallife_contact" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy utrzymujesz kontakt z ludźmi poznanymi w grze po zaprzestaniu gry?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="bonding" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="bonding" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label>
+                                 Czy zdarzyło Ci się lub planujesz spotkać się z ludźmi poznanymi w grze?
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="meeting" value="true">Tak
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="meeting" value="false">Nie
+                                </label>
+                            </div>
+                        </div><br>
+
+                    </div>
+
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                        <button type="button" class="btn btn-success">Cofnij</button>
+                        <button type="button" class="btn btn-success">Zatwierdź i prześlij ankietę</button>
                     </a>
+
                 </div>
             </div>
         </div>
+
     </div>
 
 
