@@ -26,7 +26,7 @@ body {
 .jumbotron {
   display: flex;
   align-items: center;
-  background-image: url('https://www.moo.com/images/blog/Desktop_Sizes/CRB-1906_TECH_Desktop2560x1440.jpg');
+  background-image: url('../img/jumbotron_background.jpg');
   background-size: cover;
   color: #ffffff;
   height: 500px;
