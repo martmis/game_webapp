@@ -13,30 +13,52 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Created at</th>
-            <th>First Name</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Income</th>
-            <th>Satisfaction</th>
-            <th>Python</th>
-            <th>Flask</th>
+            <th>Płeć</th>
+            <th>Grupa wiekowa</th>
+            <th>Wykształcenie</th>
+            <th>Preferowane gry</th>
+            <th>Czas gry</th>
+            <th>Tytuły gier</th>
+            <th>Komunikacja</th>
+            <th>Rezygnacja z zajęć</th>
+            <th>Częstość rezygnacji</th>
+            <th>Poświęcone zajęcie</th>
+            <th>Bycie świadkiem agresji</th>
+            <th>Uczestniczenie w agresji</th>
+            <th>Bycie świadkiem uprzykrzania</th>
+            <th>Bycie wrzodem na dupie</th>
+            <th>Bycie członkiem gildii</th>
+            <th>Powód bycia członkiem</th>
+            <th>Użycie teamspeak'a</th>
+            <th>Kontakt z otoczniem pozagrowym</th>
+            <th>Utrzymywanie kontaktu z ziomkami z gry</th>
+            <th>Spotykanie ziomków z gry w realu</th>
         </tr>
         </thead>
 
         <tbody>
-        {% for element in formdata %}
+        {% for element in surveydata %}
         <tr>
             <td>{{ element.id }}</td>
-            <td>{{ element.created_at }}</td>
-            <td>{{ element.firstname }}</td>
-            <td>{{ element.email }}</td>
+            <td>{{ element.gender }}</td>
             <td>{{ element.age }}</td>
-            <td>{{ element.income }}</td>
-            <td>{{ element.satisfaction }}</td>
-            <td>{{ element.q1 }}</td>
-            <td>{{ element.q2 }}</td>
-
+            <td>{{ element.education }}</td>
+            <td>{{ element.single_multi }}</td>
+            <td>{{ element.communication }}</td>
+            <td>{{ element.resign }}</td>
+            <td>{{ element.resign_freq }}</td>
+            <td>{{ element.resign_choice }}</td>
+            <td>{{ element.salt }}</td>
+            <td>{{ element.salt_self }}</td>
+            <td>{{ element.griefing }}</td>
+            <td>{{ element.griefing_self}}</td>
+            <td>{{ element.guild }}</td>
+            <td>{{ element.guild_why }}</td>
+            <td>{{ element.teamspeak}}</td>
+            <td>{{ element.shyness_factor }}</td>
+            <td>{{ element.reallife_contact }}</td>
+            <td>{{ element.bonding }}</td>
+            <td>{{ element.meeting }}</td>
         </tr>
         {% endfor %}
         </tbody>
