@@ -58,6 +58,7 @@ class Formdata(db.Model):
         self.reallife_contact = reallife_contact
         self.bonding = bonding
         self.meeting = meeting
+
 db.create_all()
 
 
