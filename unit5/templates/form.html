@@ -83,16 +83,21 @@
             <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
 
-                    <div class="form-group">
+                    <div class="form-group" id="gamerDiv">
                         <label>Czy zwykle grasz z komputerem (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
-                        <div class="checkbox">
+                        <div class="radio">
                             <label>
-                              <input type="checkbox" name="single_multi" value="sp"id="singleCheckbox" onclick="showSingleDiv()">Singleplayer
+                              <input type="radio" name="single_multi" value="sp" onclick="showGamerDiv()">Singleplayer
                             </label>
                         </div>
-                        <div class="checkbox">
+                        <div class="radio">
                             <label>
-                              <input type="checkbox" name="single_multi" value="mp" id="multiCheckbox" onclick="showMultiDiv()"> Multiplayer
+                              <input type="radio" name="single_multi" value="mp" onclick="showGamerDiv()"> Multiplayer
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                              <input type="radio" name="single_multi" value="msp" onclick="showGamerDiv()"> Single- i Multiplayer
                             </label>
                         </div>
                     </div><br>
@@ -193,7 +198,11 @@
                                   <input type="checkbox" name="multi_titles" value="other"> Inne
                                 </label>
                             </div>
-                            <input type="hidden" name="multi_titles" value="NA" checked="checked">
+                            <div class="checkbox hidden">
+                                <label>
+                                  <input type="checkbox" name="multi_titles" value="NA"> Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
                     </div>
 
@@ -274,7 +283,11 @@
                                   <input type="radio" name="resign_freq" value="5">częściej niż raz w tygodniu
                                 </label>
                             </div>
-                            <input type="hidden" name="resign_freq" value="-1" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="resign_freq" value="-1">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -311,7 +324,11 @@
                                   <input type="checkbox" name="resign_choice" value="other">inne
                                 </label>
                             </div>
-                            <input type="hidden" name="resign_choice" value="NA" checked="checked">
+                            <div class="checkbox hidden">
+                                <label>
+                                  <input type="checkbox" name="resign_choice" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
                     </div>
 
@@ -336,7 +353,11 @@
                                   <input type="radio" name="salt" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="salt" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="salt" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -353,7 +374,11 @@
                                   <input type="radio" name="salt_self" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="salt_self" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="salt_self" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -371,7 +396,11 @@
                                   <input type="radio" name="griefing" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="griefing" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="griefing" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -388,7 +417,11 @@
                                   <input type="radio" name="griefing_self" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="griefing_self" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="griefing_self" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -405,7 +438,11 @@
                                   <input type="radio" name="guild" value="no" onclick="showGuildDiv()">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="guild" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="guild" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="div-guild">
@@ -433,7 +470,11 @@
                                       <input type="checkbox" name="guild_why" value="other">inne
                                     </label>
                                 </div>
-                                <input type="hidden" name="guild_why" value="NA" checked="checked">
+                                <div class="checkbox hidden">
+                                    <label>
+                                      <input type="checkbox" name="guild_why" value="NA">Nie dotyczy
+                                    </label>
+                                </div>
                             </div><br>
 
                             <div class="form-group">
@@ -450,7 +491,11 @@
                                       <input type="radio" name="teamspeak" value="no">Nie
                                     </label>
                                 </div>
-                                <input type="hidden" name="teamspeak" value="NA" checked="checked">
+                                <div class="radio hidden">
+                                    <label>
+                                      <input type="radio" name="teamspeak" value="NA">Nie dotyczy
+                                    </label>
+                                </div>
                             </div><br>
 
                         </div>
@@ -469,7 +514,11 @@
                                   <input type="radio" name="shyness_factor" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="shyness_factor" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="shyness_factor" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -486,7 +535,11 @@
                                   <input type="radio" name="reallife_contact" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="reallife_contact" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="reallife_contact" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -503,7 +556,11 @@
                                   <input type="radio" name="bonding" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="bonding" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="bonding" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -520,7 +577,11 @@
                                   <input type="radio" name="meeting" value="no">Nie
                                 </label>
                             </div>
-                            <input type="hidden" name="meeting" value="NA" checked="checked">
+                            <div class="radio hidden">
+                                <label>
+                                  <input type="radio" name="meeting" value="NA">Nie dotyczy
+                                </label>
+                            </div>
                         </div><br>
 
                     </div>

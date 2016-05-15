@@ -1,7 +1,5 @@
-var singleCheckbox = document.getElementById("singleCheckbox");
+var gamerTypeID = "gamerDiv";
 var singleDivClass = "div-single";
-
-var multiCheckbox = document.getElementById("multiCheckbox");
 var multiDivClass = "div-multi";
 
 var resignRadioButton = document.getElementById("resignRadio");
@@ -12,32 +10,64 @@ var guildDivClass = "div-guild";
 
 var anchorTop = "anchorTop"; // anchored to <body> tag
 
+function showGamerDiv(){
+    var inputsAll = document.querySelectorAll('#' + gamerTypeID + ' input');
+    var input;
+    var i;
 
-function showSingleDiv(){
+    for(i =0; i< inputsAll.length;i++){
+        input = inputsAll[i];
+        if(input.checked == true){
+            switch(i) {
+                case 0:
+                    showSingleDiv('show');
+                    showMultiDiv('hide');
+                    break;
+                case 1:
+                    showSingleDiv('hide');
+                    showMultiDiv('show');
+                    break;
+                case 2:
+                    showSingleDiv('show');
+                    showMultiDiv('show');
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+
+function showSingleDiv(action){
 
     var iterator;
     var singleDivArray = document.getElementsByClassName(singleDivClass);
 
-    if (singleCheckbox.checked){
-        for (iterator=0; iterator < singleDivArray.length; iterator++){
-            singleDivArray[iterator].style.display = "block";
-        }
-        uncheckAll(singleDivClass,'show');
-    }
-    else {
-        for (iterator=0; iterator < singleDivArray.length; iterator++){
-            singleDivArray[iterator].style.display = "none";
-        }
-        uncheckAll(singleDivClass,'hide');
+    switch(action){
+        case 'show':
+            for (iterator=0; iterator < singleDivArray.length; iterator++){
+                singleDivArray[iterator].style.display = "block";
+            }
+            uncheckAll(singleDivClass,'show');
+            break;
+        case 'hide':
+            for (iterator=0; iterator < singleDivArray.length; iterator++){
+                singleDivArray[iterator].style.display = "none";
+            }
+            uncheckAll(singleDivClass,'hide');
+            break;
+        default:
+            break;
     }
 }
 
-function showMultiDiv(){
+function showMultiDiv(action){
 
     var iterator;
     var multiDivArray = document.getElementsByClassName(multiDivClass);
 
-    if (multiCheckbox.checked){
+    if (action == 'show'){
         for (iterator=0; iterator < multiDivArray.length; iterator++){
             multiDivArray[iterator].style.display = "block";
         }
@@ -145,27 +175,25 @@ function elmYPosition(eID) {
 
 function uncheckAll(divClass, actionString) {
     var inputsAll = document.querySelectorAll('div.' + divClass + ' input');
-    var inputsHidden = document.querySelectorAll('div.' + divClass + ' input[type="hidden"]');
+    var inputsHidden = document.querySelectorAll('div.' + divClass + ' div.hidden' + ' input');
     var input;
     var i;
 
     switch(actionString){
         case 'hide':
             for(i =0; i< inputsAll.length;i++){
-                var input = inputsAll[i];
+                input = inputsAll[i];
                 input.checked = false;
             }
-            checks = document.querySelectorAll('div.' + divClass + ' input[type="hidden"]');
-            for(i =0; i< checks.length;i++){
-                var input = checks[i];
+            for(i =0; i< inputsHidden.length;i++){
+                input = inputsHidden[i];
                 input.checked = true;
             }
             break;
 
         case 'show':
-            checks = document.querySelectorAll('div.' + divClass + ' input[type="hidden"]');
-            for(i =0; i< checks.length;i++){
-                var input = checks[i];
+            for(i =0; i< inputsHidden.length;i++){
+                input = inputsHidden[i];
                 input.checked = false;
             }
             break;
@@ -176,8 +204,7 @@ function uncheckAll(divClass, actionString) {
 }
 
 window.onload = function() {
-    showSingleDiv();
-    showMultiDiv();
+    showGamerDiv();
     showResignDiv();
     showGuildDiv();
 }

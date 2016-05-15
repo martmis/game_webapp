@@ -19,21 +19,21 @@ class Formdata(db.Model):
     single_multi = db.Column(db.String)
     gametime = db.Column(db.Integer)
     multi_titles = db.Column(db.String)
-    communication = db.Column(db.Boolean)
-    resign = db.Column(db.Boolean)
+    communication = db.Column(db.String)
+    resign = db.Column(db.String)
     resign_freq = db.Column(db.Integer)
     resign_choice = db.Column(db.String)
-    salt = db.Column(db.Boolean)
-    salt_self = db.Column(db.Boolean)
-    griefing = db.Column(db.Boolean)
-    griefing_self = db.Column(db.Boolean)
-    guild = db.Column(db.Boolean)
+    salt = db.Column(db.String)
+    salt_self = db.Column(db.String)
+    griefing = db.Column(db.String)
+    griefing_self = db.Column(db.String)
+    guild = db.Column(db.String)
     guild_why = db.Column(db.String)
-    teamspeak = db.Column(db.Boolean)
-    shyness_factor = db.Column(db.Boolean)
-    reallife_contact = db.Column(db.Boolean)
-    bonding = db.Column(db.Boolean)
-    meeting = db.Column(db.Boolean)
+    teamspeak = db.Column(db.String)
+    shyness_factor = db.Column(db.String)
+    reallife_contact = db.Column(db.String)
+    bonding = db.Column(db.String)
+    meeting = db.Column(db.String)
 
 
     def __init__(self, gender, age, education, single_multi, gametime, multi_titles, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting):
@@ -58,6 +58,7 @@ class Formdata(db.Model):
         self.reallife_contact = reallife_contact
         self.bonding = bonding
         self.meeting = meeting
+
 db.create_all()
 
 
