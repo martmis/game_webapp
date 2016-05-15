@@ -5,32 +5,59 @@ import statistics
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///formdata.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///surveydata.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
 
 class Formdata(db.Model):
-    __tablename__ = 'formdata'
+    __tablename__ = 'surveydata'
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.now)
-    firstname = db.Column(db.String, nullable=False)
-    email = db.Column(db.String)
+    gender = db.Column(db.String)
     age = db.Column(db.Integer)
-    income = db.Column(db.Integer)
-    satisfaction = db.Column(db.Integer)
-    q1 = db.Column(db.Integer)
-    q2 = db.Column(db.Integer)
+    education = db.Column(db.String)
+    single_multi = db.Column(db.String)
+    gametime = db.Column(db.Integer)
+    multi_titles = db.Column(db.String)
+    communication = db.Column(db.Boolean)
+    resign = db.Column(db.Boolean)
+    resign_freq = db.Column(db.Integer)
+    resign_choice = db.Column(db.String)
+    salt = db.Column(db.Boolean)
+    salt_self = db.Column(db.Boolean)
+    griefing = db.Column(db.Boolean)
+    griefing_self = db.Column(db.Boolean)
+    guild = db.Column(db.Boolean)
+    guild_why = db.Column(db.String)
+    teamspeak = db.Column(db.Boolean)
+    shyness_factor = db.Column(db.Boolean)
+    reallife_contact = db.Column(db.Boolean)
+    bonding = db.Column(db.Boolean)
+    meeting = db.Column(db.Boolean)
 
-    def __init__(self, firstname, email, age, income, satisfaction, q1, q2):
-        self.firstname = firstname
-        self.email = email
+
+    def __init__(self, gender, age, education, single_multi, gametime, multi_titles, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting):
+        self.gender = gender
         self.age = age
-        self.income = income
-        self.satisfaction = satisfaction
-        self.q1 = q1
-        self.q2 = q2
-
+        self.education = education
+        self.single_multi = single_multi
+        self.gametime = gametime
+        self.multi_titles = multi_titles
+        self.communication = communication
+        self.resign = resign
+        self.resign_freq = resign_freq
+        self.resign_choice = resign_choice
+        self.salt = salt
+        self.salt_self = salt_self
+        self.griefing = griefing
+        self.griefing_self = griefing_self
+        self.guild = guild
+        self.guild_why = guild_why
+        self.teamspeak = teamspeak
+        self.shyness_factor = shyness_factor
+        self.reallife_contact = reallife_contact
+        self.bonding = bonding
+        self.meeting = meeting
 db.create_all()
 
 
@@ -45,7 +72,7 @@ def show_form():
 @app.route("/raw")
 def show_raw():
     fd = db.session.query(Formdata).all()
-    return render_template('raw.html', formdata=fd)
+    return render_template('raw.html', surveydata=fd)
 
 
 @app.route("/result")
@@ -53,31 +80,7 @@ def show_result():
     fd_list = db.session.query(Formdata).all()
 
     # Some simple statistics for sample questions
-    satisfaction = []
-    q1 = []
-    q2 = []
-    for el in fd_list:
-        satisfaction.append(int(el.satisfaction))
-        q1.append(int(el.q1))
-        q2.append(int(el.q2))
 
-    if len(satisfaction) > 0:
-        mean_satisfaction = statistics.mean(satisfaction)
-    else:
-        mean_satisfaction = 0
-
-    if len(q1) > 0:
-        mean_q1 = statistics.mean(q1)
-    else:
-        mean_q1 = 0
-
-    if len(q2) > 0:
-        mean_q2 = statistics.mean(q2)
-    else:
-        mean_q2 = 0
-
-    # Prepare data for google charts
-    data = [['Satisfaction', mean_satisfaction], ['Python skill', mean_q1], ['Flask skill', mean_q2]]
 
     return render_template('result.html', data=data)
 
@@ -85,16 +88,32 @@ def show_result():
 @app.route("/save", methods=['POST'])
 def save():
     # Get data from FORM
-    firstname = request.form['firstname']
-    email = request.form['email']
+    gender = request.form['gender']
     age = request.form['age']
-    income = request.form['income']
-    satisfaction = request.form['satisfaction']
-    q1 = request.form['q1']
-    q2 = request.form['q2']
+    education = request.form['education']
+    single_multi = request.form['single_multi']
+    gametime = request.form['gametime']
+    multi_titles = request.form['multi_titles']
+    communication = request.form['communication']
+    resign = request.form['resign']
+    resign_freq = request.form['resign_freq']
+    resign_choice = request.form['resign_choice']
+    salt = request.form['salt']
+    salt_self = request.form['salt_self']
+    griefing = request.form['griefing']
+    griefing_self = request.form['griefing_self']
+    guild = request.form['guild']
+    guild_why = request.form['guild_why']
+    teamspeak = request.form['teamspeak']
+    shyness_factor = request.form['shyness_factor']
+    reallife_contact = request.form['reallife_contact']
+    bonding = request.form['bonding']
+    meeting = request.form['meeting']
+
 
     # Save the data
-    fd = Formdata(firstname, email, age, income, satisfaction, q1, q2)
+    fd = Formdata(gender, age, education, single_multi, gametime, multi_titles, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting)
+
     db.session.add(fd)
     db.session.commit()
 
