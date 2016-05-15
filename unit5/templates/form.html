@@ -222,12 +222,12 @@
                         </label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="communication" value="true">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
+                              <input type="radio" name="communication" value="yes">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="communication" value="false">Nie, raczej skupiam się na grze
+                              <input type="radio" name="communication" value="no">Nie, raczej skupiam się na grze
                             </label>
                         </div>
                     </div><br>
@@ -236,12 +236,12 @@
                         <label>Czy zdarzyło Ci się zrezygnować z zajęć, planów lub obowiązków na rzeczy gry?</label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="true" id="resignRadio" onclick="showResignDiv()">Tak
+                              <input type="radio" name="resign" value="yes" id="resignRadio" onclick="showResignDiv()">Tak
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="false" onclick="showResignDiv()">Nie
+                              <input type="radio" name="resign" value="no" onclick="showResignDiv()">Nie
                             </label>
                         </div>
                     </div><br>
@@ -274,7 +274,7 @@
                                   <input type="radio" name="resign_freq" value="5">częściej niż raz w tygodniu
                                 </label>
                             </div>
-                            <input type="hidden" name="resign_freq" value="NA" checked="checked">
+                            <input type="hidden" name="resign_freq" value="-1" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -328,12 +328,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt" value="true">Tak
+                                  <input type="radio" name="salt" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt" value="false">Nie
+                                  <input type="radio" name="salt" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="salt" value="NA" checked="checked">
@@ -345,12 +345,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt_self" value="true">Tak
+                                  <input type="radio" name="salt_self" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt_self" value="false">Nie
+                                  <input type="radio" name="salt_self" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="salt_self" value="NA" checked="checked">
@@ -363,12 +363,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing" value="true">Tak
+                                  <input type="radio" name="griefing" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing" value="false">Nie
+                                  <input type="radio" name="griefing" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="griefing" value="NA" checked="checked">
@@ -380,12 +380,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing_self" value="true">Tak
+                                  <input type="radio" name="griefing_self" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing_self" value="false">Nie
+                                  <input type="radio" name="griefing_self" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="griefing_self" value="NA" checked="checked">
@@ -397,12 +397,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="true" id="guildRadio" onclick="showGuildDiv()">Tak
+                                  <input type="radio" name="guild" value="yes" id="guildRadio" onclick="showGuildDiv()">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="false" onclick="showGuildDiv()">Nie
+                                  <input type="radio" name="guild" value="no" onclick="showGuildDiv()">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="guild" value="NA" checked="checked">
@@ -442,12 +442,12 @@
                                 </label><br>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="teamspeak" value="true">Tak
+                                      <input type="radio" name="teamspeak" value="yes">Tak
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="teamspeak" value="false">Nie
+                                      <input type="radio" name="teamspeak" value="no">Nie
                                     </label>
                                 </div>
                                 <input type="hidden" name="teamspeak" value="NA" checked="checked">
@@ -461,12 +461,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="shyness_factor" value="true">Tak
+                                  <input type="radio" name="shyness_factor" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="shyness_factor" value="false">Nie
+                                  <input type="radio" name="shyness_factor" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="shyness_factor" value="NA" checked="checked">
@@ -478,12 +478,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="reallife_contact" value="true">Tak
+                                  <input type="radio" name="reallife_contact" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="reallife_contact" value="false">Nie
+                                  <input type="radio" name="reallife_contact" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="reallife_contact" value="NA" checked="checked">
@@ -495,12 +495,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="bonding" value="true">Tak
+                                  <input type="radio" name="bonding" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="bonding" value="false">Nie
+                                  <input type="radio" name="bonding" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="bonding" value="NA" checked="checked">
@@ -512,12 +512,12 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="meeting" value="true">Tak
+                                  <input type="radio" name="meeting" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="meeting" value="false">Nie
+                                  <input type="radio" name="meeting" value="no">Nie
                                 </label>
                             </div>
                             <input type="hidden" name="meeting" value="NA" checked="checked">
