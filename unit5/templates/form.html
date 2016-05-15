@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                         <label for="education">Wykształcenie</label>
-                        <select class="form-control" id="education">
+                        <select class="form-control" name="education">
                             <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
                             <option value="1">podstawowe</option>
                             <option value="2">zawodowe</option>
@@ -64,7 +64,7 @@
                         </select>
                     </div><br>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" onclick="ScrollTop()">
                         <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
                     </a>
 
@@ -87,18 +87,18 @@
                         <label>Czy zwykle grasz z komputerem (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="single_multi" value="sp">Singleplayer
+                              <input type="checkbox" name="single_multi" value="sp"id="singleCheckbox" onclick="showSingleDiv()">Singleplayer
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="single_multi" value="mp"> Multiplayer
+                              <input type="checkbox" name="single_multi" value="mp" id="multiCheckbox" onclick="showMultiDiv()"> Multiplayer
                             </label>
                         </div>
                     </div><br>
 
                     <div class="form-group">
-                        <label for="gametime">Ile średnio przeznaczasz dziennie czasu na granie?</label><br>
+                        <label>Ile średnio przeznaczasz dziennie czasu na granie?</label><br>
                         <label class="radio-inline">
                           <input type="radio" name="gametime" value="1">poniżej godziny
                         </label>
@@ -119,10 +119,10 @@
                     <div class="div-single"><h1>SINGLE</h1>
                         <div class="form-group">
                             <p>Jesteśmy w stanie tu coś wymyślić?</p>
-                        </div>
-                    </div><br>
+                        </div><br>
+                    </div>
 
-                    <div class="div-multi"><h1>MULTI</h1>
+                    <div class="div-multi">
                         <div class="form-group">
                             <label>
                                 Poniżej przedstawiono wybrane tytuły popularnych gier <i>multiplayer</i>.
@@ -193,10 +193,11 @@
                                   <input type="checkbox" name="multi_titles" value="other"> Inne
                                 </label>
                             </div>
+                            <input type="hidden" name="multi_titles" value="NA" checked="checked">
                         </div><br>
                     </div>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" onclick="ScrollTop()">
                         <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
                     </a>
 
@@ -221,33 +222,31 @@
                         </label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="communication" value="true">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
+                              <input type="radio" name="communication" value="yes">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="communication" value="false">Nie, raczej skupiam się na grze
+                              <input type="radio" name="communication" value="no">Nie, raczej skupiam się na grze
                             </label>
                         </div>
                     </div><br>
 
-
-<hr>
                     <div class="form-group">
                         <label>Czy zdarzyło Ci się zrezygnować z zajęć, planów lub obowiązków na rzeczy gry?</label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="true">Tak
+                              <input type="radio" name="resign" value="yes" id="resignRadio" onclick="showResignDiv()">Tak
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="false">Nie
+                              <input type="radio" name="resign" value="no" onclick="showResignDiv()">Nie
                             </label>
                         </div>
                     </div><br>
 
-                    <div class="div-resign"><h1>TAK</h1>
+                    <div class="div-resign">
                         <div class="form-group">
                             <label>Jak często taka sytuacja ma miejsce?</label><br>
                             <div class="radio">
@@ -257,24 +256,25 @@
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="2">dwa do sześć razy w roku
+                                  <input type="radio" name="resign_freq" value="2">rzadko (kilka razy w roku)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="3">średnio raz na dwa miesiące
+                                  <input type="radio" name="resign_freq" value="3">sporadycznie (raz w miesiącu)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="4">średnio raz w miesiącu
+                                  <input type="radio" name="resign_freq" value="4">często (kilka razy w miesiącu)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="5">częściej niż raz w miesiącu
+                                  <input type="radio" name="resign_freq" value="5">częściej niż raz w tygodniu
                                 </label>
                             </div>
+                            <input type="hidden" name="resign_freq" value="-1" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -283,59 +283,60 @@
                             </label><br>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="sport">z aktywności fizycznej
+                                  <input type="checkbox" name="resign_choice" value="sport">z aktywności fizycznej
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="family">z czasu spędzonego z rodziną
+                                  <input type="checkbox" name="resign_choice" value="family">z czasu spędzonego z rodziną
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="friends">z czasu spędzonego z przyjaciółmi lub znajomymi
+                                  <input type="checkbox" name="resign_choice" value="friends">z czasu spędzonego z przyjaciółmi lub znajomymi
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="chores">z obowiązków domowych
+                                  <input type="checkbox" name="resign_choice" value="chores">z obowiązków domowych
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="work">ze szkoły lub pracy
+                                  <input type="checkbox" name="resign_choice" value="work">ze szkoły lub pracy
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="other">inne
+                                  <input type="checkbox" name="resign_choice" value="other">inne
                                 </label>
                             </div>
+                            <input type="hidden" name="resign_choice" value="NA" checked="checked">
                         </div><br>
                     </div>
-<hr>
 
                     <div class="div-single"><h1>SINGLE</h1>
                         <div class="form-group">
                             <p>Jesteśmy w stanie tu coś wymyślić?</p>
-                        </div>
-                    </div><br>
+                        </div><br>
+                    </div>
 
-                    <div class="div-multi"><h1>MULTI</h1>
+                    <div class="div-multi">
                         <div class="form-group">
                             <label>
                                  Czy zdarzyło Ci się być świadkiem agresywnego zachowania graczy ukierunkowanego na inną osobę lub grupę osób?
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt" value="true">Tak
+                                  <input type="radio" name="salt" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt" value="false">Nie
+                                  <input type="radio" name="salt" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="salt" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -344,14 +345,15 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt_self" value="true">Tak
+                                  <input type="radio" name="salt_self" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt_self" value="false">Nie
+                                  <input type="radio" name="salt_self" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="salt_self" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -361,14 +363,15 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="greifing" value="true">Tak
+                                  <input type="radio" name="griefing" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing" value="false">Nie
+                                  <input type="radio" name="griefing" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="griefing" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -377,34 +380,35 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="greifing_self" value="true">Tak
+                                  <input type="radio" name="griefing_self" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing_self" value="false">Nie
+                                  <input type="radio" name="griefing_self" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="griefing_self" value="NA" checked="checked">
                         </div><br>
 
-<hr>
                         <div class="form-group">
                             <label>
                                  Czy należysz do gildii, klanu lub innej społeczności w grze?
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="true">Tak
+                                  <input type="radio" name="guild" value="yes" id="guildRadio" onclick="showGuildDiv()">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="false">Nie
+                                  <input type="radio" name="guild" value="no" onclick="showGuildDiv()">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="guild" value="NA" checked="checked">
                         </div><br>
 
-                        <div class="div-guild"><h1>TAK</h1>
+                        <div class="div-guild">
                             <div class="form-group">
                                 <label>
                                      Jakie były powody przystąpienia do takiej społeczności?
@@ -429,6 +433,7 @@
                                       <input type="checkbox" name="guild_why" value="other">inne
                                     </label>
                                 </div>
+                                <input type="hidden" name="guild_why" value="NA" checked="checked">
                             </div><br>
 
                             <div class="form-group">
@@ -437,18 +442,18 @@
                                 </label><br>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="teamspeak" value="true">Tak
+                                      <input type="radio" name="teamspeak" value="yes">Tak
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="teamspeak" value="false">Nie
+                                      <input type="radio" name="teamspeak" value="no">Nie
                                     </label>
                                 </div>
+                                <input type="hidden" name="teamspeak" value="NA" checked="checked">
                             </div><br>
 
                         </div>
-<hr>
 
                         <div class="form-group">
                             <label>
@@ -456,14 +461,15 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="shyness_factor" value="true">Tak
+                                  <input type="radio" name="shyness_factor" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="shyness_factor" value="false">Nie
+                                  <input type="radio" name="shyness_factor" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="shyness_factor" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -472,14 +478,15 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="reallife_contact" value="true">Tak
+                                  <input type="radio" name="reallife_contact" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="reallife_contact" value="false">Nie
+                                  <input type="radio" name="reallife_contact" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="reallife_contact" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -488,14 +495,15 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="bonding" value="true">Tak
+                                  <input type="radio" name="bonding" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="bonding" value="false">Nie
+                                  <input type="radio" name="bonding" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="bonding" value="NA" checked="checked">
                         </div><br>
 
                         <div class="form-group">
@@ -504,19 +512,20 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="meeting" value="true">Tak
+                                  <input type="radio" name="meeting" value="yes">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="meeting" value="false">Nie
+                                  <input type="radio" name="meeting" value="no">Nie
                                 </label>
                             </div>
+                            <input type="hidden" name="meeting" value="NA" checked="checked">
                         </div><br>
 
                     </div>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="ScrollTop()">
                         <button type="button" class="btn btn-success">Zatwierdź i prześlij ankietę</button>
                     </a>
 
@@ -530,6 +539,8 @@
 
     <button type="submit" class="btn btn-default">Save</button>
 </form>
+
+    <script src="static/js/form.js"></script>
 
 </div>
 {% endblock %}
