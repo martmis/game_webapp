@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                         <label for="education">Wykształcenie</label>
-                        <select class="form-control" id="education">
+                        <select class="form-control" name="education">
                             <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
                             <option value="1">podstawowe</option>
                             <option value="2">zawodowe</option>
@@ -87,12 +87,12 @@
                         <label>Czy zwykle grasz z komputerem (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="single_multi" value="sp">Singleplayer
+                              <input type="checkbox" name="single_multi" value="sp"id="singleCheckbox" onclick="showSingleDiv()">Singleplayer
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="single_multi" value="mp"> Multiplayer
+                              <input type="checkbox" name="single_multi" value="mp" id="multiCheckbox" onclick="showMultiDiv()"> Multiplayer
                             </label>
                         </div>
                     </div><br>
@@ -119,10 +119,10 @@
                     <div class="div-single"><h1>SINGLE</h1>
                         <div class="form-group">
                             <p>Jesteśmy w stanie tu coś wymyślić?</p>
-                        </div>
-                    </div><br>
+                        </div><br>
+                    </div>
 
-                    <div class="div-multi"><h1>MULTI</h1>
+                    <div class="div-multi">
                         <div class="form-group">
                             <label>
                                 Poniżej przedstawiono wybrane tytuły popularnych gier <i>multiplayer</i>.
@@ -231,23 +231,21 @@
                         </div>
                     </div><br>
 
-
-<hr>
                     <div class="form-group">
                         <label>Czy zdarzyło Ci się zrezygnować z zajęć, planów lub obowiązków na rzeczy gry?</label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="true">Tak
+                              <input type="radio" name="resign" value="true" id="resignRadio" onclick="showResignDiv()">Tak
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="false">Nie
+                              <input type="radio" name="resign" value="false" onclick="showResignDiv()">Nie
                             </label>
                         </div>
                     </div><br>
 
-                    <div class="div-resign"><h1>TAK</h1>
+                    <div class="div-resign">
                         <div class="form-group">
                             <label>Jak często taka sytuacja ma miejsce?</label><br>
                             <div class="radio">
@@ -257,22 +255,22 @@
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="2">dwa do sześć razy w roku
+                                  <input type="radio" name="resign_freq" value="2">rzadko (kilka razy w roku)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="3">średnio raz na dwa miesiące
+                                  <input type="radio" name="resign_freq" value="3">sporadycznie (raz w miesiącu)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="4">średnio raz w miesiącu
+                                  <input type="radio" name="resign_freq" value="4">często (kilka razy w miesiącu)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="5">częściej niż raz w miesiącu
+                                  <input type="radio" name="resign_freq" value="5">częściej niż raz w tygodniu
                                 </label>
                             </div>
                         </div><br>
@@ -283,45 +281,44 @@
                             </label><br>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="sport">z aktywności fizycznej
+                                  <input type="checkbox" name="resign_choice" value="sport">z aktywności fizycznej
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="family">z czasu spędzonego z rodziną
+                                  <input type="checkbox" name="resign_choice" value="family">z czasu spędzonego z rodziną
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="friends">z czasu spędzonego z przyjaciółmi lub znajomymi
+                                  <input type="checkbox" name="resign_choice" value="friends">z czasu spędzonego z przyjaciółmi lub znajomymi
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="chores">z obowiązków domowych
+                                  <input type="checkbox" name="resign_choice" value="chores">z obowiązków domowych
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="work">ze szkoły lub pracy
+                                  <input type="checkbox" name="resign_choice" value="work">ze szkoły lub pracy
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign-choice" value="other">inne
+                                  <input type="checkbox" name="resign_choice" value="other">inne
                                 </label>
                             </div>
                         </div><br>
                     </div>
-<hr>
 
                     <div class="div-single"><h1>SINGLE</h1>
                         <div class="form-group">
                             <p>Jesteśmy w stanie tu coś wymyślić?</p>
-                        </div>
-                    </div><br>
+                        </div><br>
+                    </div>
 
-                    <div class="div-multi"><h1>MULTI</h1>
+                    <div class="div-multi">
                         <div class="form-group">
                             <label>
                                  Czy zdarzyło Ci się być świadkiem agresywnego zachowania graczy ukierunkowanego na inną osobę lub grupę osób?
@@ -387,24 +384,23 @@
                             </div>
                         </div><br>
 
-<hr>
                         <div class="form-group">
                             <label>
                                  Czy należysz do gildii, klanu lub innej społeczności w grze?
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="true">Tak
+                                  <input type="radio" name="guild" value="true" id="guildRadio" onclick="showGuildDiv()">Tak
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="false">Nie
+                                  <input type="radio" name="guild" value="false" onclick="showGuildDiv()">Nie
                                 </label>
                             </div>
                         </div><br>
 
-                        <div class="div-guild"><h1>TAK</h1>
+                        <div class="div-guild">
                             <div class="form-group">
                                 <label>
                                      Jakie były powody przystąpienia do takiej społeczności?
@@ -448,7 +444,6 @@
                             </div><br>
 
                         </div>
-<hr>
 
                         <div class="form-group">
                             <label>
@@ -530,6 +525,8 @@
 
     <button type="submit" class="btn btn-default">Save</button>
 </form>
+
+    <script src="static/js/form.js"></script>
 
 </div>
 {% endblock %}
