@@ -204,7 +204,8 @@ function uncheckAll(divClass, actionString) {
 }
 
 window.onload = function() {
-    showGamerDiv();
     showResignDiv();
     showGuildDiv();
+    showSingleDiv('hide');
+    showMultiDiv('hide');
 }
