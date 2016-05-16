@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label>Płeć</label><br>
                         <label class="radio-inline">
-                          <input type="radio" name="gender" value="F">Kobieta
+                          <input type="radio" name="gender" value="F" required>Kobieta
                         </label>
                         <label class="radio-inline">
                           <input type="radio" name="gender" value="M">Mężczyzna
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="age">Grupa wiekowa</label><br>
                         <label class="radio-inline">
-                          <input type="radio" name="age" value="1">poniżej 15 lat
+                          <input type="radio" name="age" value="1" required>poniżej 15 lat
                         </label>
                         <label class="radio-inline">
                           <input type="radio" name="age" value="2">16-30 lat
@@ -55,9 +55,9 @@
 
                     <div class="form-group">
                         <label for="education">Wykształcenie</label>
-                        <select class="form-control" name="education">
+                        <select class="form-control" name="education"  required>
                             <option value="" disabled selected hidden>Proszę wybrać jedną z poniższych opcji</option>
-                            <option value="1">podstawowe</option>
+                            <option value="1" podstawowe</option>
                             <option value="2">zawodowe</option>
                             <option value="3">średnie</option>
                             <option value="4">wyższe</option>
@@ -87,7 +87,7 @@
                         <label>Czy zwykle grasz z komputerem (gry <i>singleplayer</i>) czy z innymi ludźmi (gry <i>multiplayer</i>)?</label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="single_multi" value="sp" onclick="showGamerDiv()">Singleplayer
+                              <input type="radio" name="single_multi" value="sp" onclick="showGamerDiv()" required>Singleplayer
                             </label>
                         </div>
                         <div class="radio">
@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <label>Ile średnio przeznaczasz dziennie czasu na granie?</label><br>
                         <label class="radio-inline">
-                          <input type="radio" name="gametime" value="1">poniżej godziny
+                          <input type="radio" name="gametime" value="1" required>poniżej godziny
                         </label>
                         <label class="radio-inline">
                           <input type="radio" name="gametime" value="2">1-2 godziny
@@ -135,7 +135,7 @@
                             </label><br>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="multi_titles" value="dota">DOTA 2
+                                  <input type="checkbox" name="multi_titles" value="dota" >DOTA 2
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -231,7 +231,7 @@
                         </label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="communication" value="yes">Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
+                              <input type="radio" name="communication" value="yes" required>Tak, przez komunikator, telefon, rozmawiając na żywo, itp.
                             </label>
                         </div>
                         <div class="radio">
@@ -245,7 +245,7 @@
                         <label>Czy zdarzyło Ci się zrezygnować z zajęć, planów lub obowiązków na rzeczy gry?</label><br>
                         <div class="radio">
                             <label>
-                              <input type="radio" name="resign" value="yes" id="resignRadio" onclick="showResignDiv()">Tak
+                              <input type="radio" name="resign" value="yes" id="resignRadio" onclick="showResignDiv()" required>Tak
                             </label>
                         </div>
                         <div class="radio">
@@ -260,7 +260,7 @@
                             <label>Jak często taka sytuacja ma miejsce?</label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="resign_freq" value="1">rzadziej niż raz w roku
+                                  <input type="radio" name="resign_freq" value="1" required>rzadziej niż raz w roku
                                 </label>
                             </div>
                             <div class="radio">
@@ -296,7 +296,7 @@
                             </label><br>
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="resign_choice" value="sport">z aktywności fizycznej
+                                  <input type="checkbox" name="resign_choice" value="sport" >z aktywności fizycznej
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -345,7 +345,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt" value="yes">Tak
+                                  <input type="radio" name="salt" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -366,7 +366,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="salt_self" value="yes">Tak
+                                  <input type="radio" name="salt_self" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -388,7 +388,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing" value="yes">Tak
+                                  <input type="radio" name="griefing" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -409,7 +409,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="griefing_self" value="yes">Tak
+                                  <input type="radio" name="griefing_self" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -430,7 +430,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="guild" value="yes" id="guildRadio" onclick="showGuildDiv()">Tak
+                                  <input type="radio" name="guild" value="yes" id="guildRadio" onclick="showGuildDiv()" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -452,7 +452,7 @@
                                 </label><br>
                                 <div class="checkbox">
                                     <label>
-                                      <input type="checkbox" name="guild_why" value="meeting">chęć zawierania nowych znajomości
+                                      <input type="checkbox" name="guild_why" value="meeting" >chęć zawierania nowych znajomości
                                     </label>
                                 </div>
                                 <div class="checkbox">
@@ -483,7 +483,7 @@
                                 </label><br>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="teamspeak" value="yes">Tak
+                                      <input type="radio" name="teamspeak" value="yes" required>Tak
                                     </label>
                                 </div>
                                 <div class="radio">
@@ -506,7 +506,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="shyness_factor" value="yes">Tak
+                                  <input type="radio" name="shyness_factor" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -527,7 +527,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="reallife_contact" value="yes">Tak
+                                  <input type="radio" name="reallife_contact" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -548,7 +548,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="bonding" value="yes">Tak
+                                  <input type="radio" name="bonding" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
@@ -569,7 +569,7 @@
                             </label><br>
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="meeting" value="yes">Tak
+                                  <input type="radio" name="meeting" value="yes" required>Tak
                                 </label>
                             </div>
                             <div class="radio">
