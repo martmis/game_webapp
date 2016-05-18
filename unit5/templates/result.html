@@ -7,23 +7,78 @@
 
     <div class="page-header">
         <h1>Results</h1>
-        <div id="chart_div"></div>
     </div>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</div>
+<div class="container theme-showcase" role="main">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.load('visualization', '1', {'packages':['corechart']});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Question');
-        data.addColumn('number', 'Average answer');
-        data.addRows( {{ data|tojson }} );
-        var chart = new google.visualization.ColumnChart(
-                document.getElementById('chart_div'));
-        chart.draw(data, {legend: 'none', vAxis: {baseline: 0} });
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+        var gender = google.visualization.arrayToDataTable([
+          ['Plec', 'Ilosc'],
+          ['Kobiety', {{gender[0]}}],
+          ['Mezczyzni', {{gender[1]}}],
+        ]);
+
+        var age = google.visualization.arrayToDataTable([
+          ['Wiek', 'Ilosc'],
+          ['Poniżej 15 lat', {{ageGroup[0]}}],
+          ['16 - 30 lat', {{ageGroup[1]}}],
+          ['31 - 45 lat', {{ageGroup[2]}}],
+          ['45 - 60 lat', {{ageGroup[3]}}],
+          ['Powyżej 61 lat', {{ageGroup[4]}}],
+        ]);
+
+        var education = google.visualization.arrayToDataTable([
+          ['Wykształcenie', 'Ilosc'],
+          ['podstawowe', {{educationGroup[0]}}],
+          ['zawodowe', {{educationGroup[1]}}],
+          ['średnie', {{educationGroup[2]}}],
+          ['wyższe', {{educationGroup[3]}}],
+        ]);
+
+        var smp = google.visualization.arrayToDataTable([
+          ['Preferowane typy gier', 'Ilosc'],
+          ['Singleplayer', {{smp[0]}}],
+          ['Multiplayer', {{smp[1]}}],
+          ['Single/Multiplayer', {{smp[2]}}],
+        ]);
+
+        var options_gender= {
+          title: 'Plec'
+        };
+
+        var options_age = {
+          title: 'Grupa wiekowa'
+        };
+
+        var options_education = {
+            title: 'Wykształcenie'
+        };
+
+        var options_smp = {
+            title: 'Preferowane typy gier'
+        };
+
+        var chart_gender = new google.visualization.PieChart(document.getElementById('gender'));
+        var chart_age = new google.visualization.PieChart(document.getElementById('age'));
+        var chart_education = new google.visualization.PieChart(document.getElementById('education'));
+        var chart_smp = new google.visualization.PieChart(document.getElementById('smp'));
+
+        chart_gender.draw(gender, options_gender);
+        chart_age.draw(age, options_age);
+        chart_education.draw(education, options_education);
+        chart_smp.draw(smp, options_smp);
       }
+
     </script>
+    <div id="gender" style="width: 900px; height: 500px;"></div>
+    <div id="age" style="width: 900px; height: 500px;"></div>
+    <div id="education" style="width: 900px; height: 500px;"></div>
+    <div id="smp" style="width: 900px; height: 500px;"></div>
 
 </div>
 {% endblock %}

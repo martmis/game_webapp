@@ -79,16 +79,33 @@ def show_raw():
 @app.route("/result")
 def show_result():
     fd_list = db.session.query(Formdata).all()
+    females = Formdata.query.filter_by(gender='F').count()
+    males = Formdata.query.filter_by(gender='M').count()
+    gender_list = [females, males]
 
-    # Some simple statistics for sample questions
+    ageGroup1 = Formdata.query.filter_by(age=1).count()
+    ageGroup2 = Formdata.query.filter_by(age=2).count()
+    ageGroup3 = Formdata.query.filter_by(age=3).count()
+    ageGroup4 = Formdata.query.filter_by(age=4).count()
+    ageGroup5 = Formdata.query.filter_by(age=5).count()
+    ageGroup_list = [ageGroup1, ageGroup2, ageGroup3, ageGroup4, ageGroup5]
 
+    educationGroup1 = Formdata.query.filter_by(education=1).count()
+    educationGroup2 = Formdata.query.filter_by(education=2).count()
+    educationGroup3 = Formdata.query.filter_by(education=3).count()
+    educationGroup4 = Formdata.query.filter_by(education=4).count()
+    educationGroup_list =[educationGroup1, educationGroup2, educationGroup3, educationGroup4]
 
-    return render_template('result.html', data=data)
+    single = Formdata.query.filter_by(single_multi='sp').count()
+    multi = Formdata.query.filter_by(single_multi='mp').count()
+    single_multi = Formdata.query.filter_by(single_multi='msp').count()
+    smp_list = [single, multi, single_multi]
+    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list)
 
 
 @app.route("/save", methods=['POST'])
 def save():
-    # Get data from FORM
+    # Get data from FORM6
     gender = request.form['gender']
     age = request.form['age']
     education = request.form['education']
