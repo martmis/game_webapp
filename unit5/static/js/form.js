@@ -10,6 +10,10 @@ var guildDivClass = "div-guild";
 
 var anchorTop = "anchorTop"; // anchored to <body> tag
 
+var multiTitlesCheckboxGrpID = 'MultiTitlesCheckboxGrp';
+var resignChoiceCheckboxGrpID = 'ResignChoiceCheckboxGrp';
+var guildWhyCheckboxGrpID = 'GuildWhyCheckboxGrp';
+
 function showGamerDiv(){
     var inputsAll = document.querySelectorAll('#' + gamerTypeID + ' input');
     var input;
@@ -44,21 +48,19 @@ function showSingleDiv(action){
     var iterator;
     var singleDivArray = document.getElementsByClassName(singleDivClass);
 
-    switch(action){
-        case 'show':
-            for (iterator=0; iterator < singleDivArray.length; iterator++){
-                singleDivArray[iterator].style.display = "block";
-            }
-            uncheckAll(singleDivClass,'show');
-            break;
-        case 'hide':
-            for (iterator=0; iterator < singleDivArray.length; iterator++){
-                singleDivArray[iterator].style.display = "none";
-            }
-            uncheckAll(singleDivClass,'hide');
-            break;
-        default:
-            break;
+    if (action == 'show') {
+        for (iterator = 0; iterator < singleDivArray.length; iterator++) {
+            singleDivArray[iterator].style.display = "block";
+        }
+        uncheckAll(singleDivClass, 'show');
+        checkboxRequireAll();
+    }
+    else {
+        for (iterator = 0; iterator < singleDivArray.length; iterator++) {
+            singleDivArray[iterator].style.display = "none";
+        }
+        uncheckAll(singleDivClass, 'hide');
+        checkboxRequireAll();
     }
 }
 
@@ -72,12 +74,14 @@ function showMultiDiv(action){
             multiDivArray[iterator].style.display = "block";
         }
         uncheckAll(multiDivClass,'show');
+        checkboxRequireAll();
     }
     else {
         for (iterator=0; iterator < multiDivArray.length; iterator++){
             multiDivArray[iterator].style.display = "none";
         }
         uncheckAll(multiDivClass,'hide');
+        checkboxRequireAll();
     }
 }
 
@@ -91,12 +95,14 @@ function showResignDiv(){
             resignDivArray[iterator].style.display = "block";
         }
         uncheckAll(resignDivClass,'show');
+        checkboxRequireAll();
     }
     else {
         for (iterator=0; iterator < resignDivArray.length; iterator++){
             resignDivArray[iterator].style.display = "none";
         }
         uncheckAll(resignDivClass,'hide');
+        checkboxRequireAll();
     }
 }
 
@@ -110,12 +116,14 @@ function showGuildDiv(){
             guildDivArray[iterator].style.display = "block";
         }
         uncheckAll(guildDivClass,'show');
+        checkboxRequireAll();
     }
     else {
         for (iterator=0; iterator < guildDivArray.length; iterator++){
             guildDivArray[iterator].style.display = "none";
         }
         uncheckAll(guildDivClass,'hide');
+        checkboxRequireAll();
     }
 }
 
@@ -203,9 +211,48 @@ function uncheckAll(divClass, actionString) {
     }
 }
 
+function checkboxRequireAll(){
+
+    var checkboxGrpArray = [multiTitlesCheckboxGrpID, resignChoiceCheckboxGrpID, guildWhyCheckboxGrpID];
+
+    for (var i in checkboxGrpArray){
+        checkboxRequire(checkboxGrpArray[i]);
+    }
+}
+
+function checkboxRequire(divID) {
+    var inputsAll = document.querySelectorAll('#' + divID + ' input');
+    var input;
+    var i;
+
+    for(i =0; i< inputsAll.length;i++){
+        input = inputsAll[i];
+        if(input.checked == true) {
+            setRequireAttrToAll(divID, false);
+            break;
+        }
+        else if (i == inputsAll.length - 1){
+            setRequireAttrToAll(divID, true);
+        }
+    }
+}
+
+function setRequireAttrToAll(divID, actionBool){
+    // actionBool is either true or false
+    var inputsAll = document.querySelectorAll('#' + divID + ' input');
+    var input;
+    var i;
+
+    for(i =0; i< inputsAll.length;i++){
+        input = inputsAll[i];
+        input.required = actionBool;
+    }
+}
+
 window.onload = function() {
     showResignDiv();
     showGuildDiv();
     showSingleDiv('hide');
     showMultiDiv('hide');
+    checkboxRequireAll();
 }
