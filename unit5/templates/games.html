@@ -1,0 +1,60 @@
+<!-- extend base layout -->
+<div class="container theme-showcase" role="main">
+
+{% extends "base.html" %}
+
+    {% block content %}
+
+    <div class="page-header">
+        <h1>Games</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>dota</th>
+            <th>lol</th>
+            <th>hots</th>
+            <th>cs</th>
+            <th>cod</th>
+            <th>bf</th>
+            <th>gta</th>
+            <th>fifa</th>
+            <th>minecraft</th>
+            <th>hs</th>
+            <th>sc2</th>
+            <th>wow</th>
+            <th>other</th>
+            <th>na</th>
+            <th># ankietowanego</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for element in surveydata %}
+        <tr>
+            <td>{{ element.id }}</td>
+            <td>{{ element.dota }}</td>
+            <td>{{ element.lol }}</td>
+            <td>{{ element.hots }}</td>
+            <td>{{ element.cs }}</td>
+            <td>{{ element.cod }}</td>
+            <td>{{ element.bf }}</td>
+            <td>{{ element.gta }}</td>
+            <td>{{ element.fifa }}</td>
+            <td>{{ element.minecraft }}</td>
+            <td>{{ element.hs }}</td>
+            <td>{{ element.sc2 }}</td>
+            <td>{{ element.wow }}</td>
+            <td>{{ element.other }}</td>
+            <td>{{ element.na}}</td>
+            <td>{{ element.surveydata_id }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}
+</div>

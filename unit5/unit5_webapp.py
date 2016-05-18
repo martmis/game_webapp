@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 from datetime import datetime
 import statistics
 
@@ -10,7 +12,42 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
 
-class Formdata(db.Model):
+class Games(db.Model):
+    _tablename_ = 'games'
+    id = db.Column(db.Integer, primary_key=True)
+    dota = db.Column(db.Boolean)
+    lol = db.Column(db.Boolean)
+    hots = db.Column(db.Boolean)
+    cs = db.Column(db.Boolean)
+    cod = db.Column(db.Boolean)
+    bf = db.Column(db.Boolean)
+    gta = db.Column(db.Boolean)
+    fifa = db.Column(db.Boolean)
+    minecraft = db.Column(db.Boolean)
+    hs = db.Column(db.Boolean)
+    sc2 = db.Column(db.Boolean)
+    wow = db.Column(db.Boolean)
+    other = db.Column(db.Boolean)
+    na = db.Column(db.Boolean)
+    surveydata_id = db.Column(db.Integer, ForeignKey('surveydata.id'))
+
+    def __init__(self, games_getlist):
+        self.dota = 'dota' in games_getlist
+        self.lol = 'lol' in games_getlist
+        self.hots = 'hots' in games_getlist
+        self.cs = 'cs' in games_getlist
+        self.cod = 'cod' in games_getlist
+        self.bf = 'bf' in games_getlist
+        self.gta = 'gta' in games_getlist
+        self.fifa = 'fifa' in games_getlist
+        self.minecraft = 'minecraft' in games_getlist
+        self.hs = 'hs' in games_getlist
+        self.sc2 = 'sc2' in games_getlist
+        self.wow = 'wow' in games_getlist
+        self.other = 'other' in games_getlist
+        self.na = 'NA' in games_getlist
+
+class Surveydata(db.Model):
     __tablename__ = 'surveydata'
     id = db.Column(db.Integer, primary_key=True)
     gender = db.Column(db.String)
@@ -18,7 +55,7 @@ class Formdata(db.Model):
     education = db.Column(db.String)
     single_multi = db.Column(db.String)
     gametime = db.Column(db.Integer)
-    multi_titles = db.Column(db.String)
+    multi_titles = relationship("Games", uselist=False, backref="surveydata")
     communication = db.Column(db.String)
     resign = db.Column(db.String)
     resign_freq = db.Column(db.Integer)
@@ -36,13 +73,13 @@ class Formdata(db.Model):
     meeting = db.Column(db.String)
 
 
-    def __init__(self, gender, age, education, single_multi, gametime, multi_titles, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting):
+    def __init__(self, gender, age, education, single_multi, gametime, games, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting):
         self.gender = gender
         self.age = age
         self.education = education
         self.single_multi = single_multi
         self.gametime = gametime
-        self.multi_titles = multi_titles
+        self.multi_titles = games
         self.communication = communication
         self.resign = resign
         self.resign_freq = resign_freq
@@ -72,40 +109,45 @@ def show_form():
 
 @app.route("/raw")
 def show_raw():
-    fd = db.session.query(Formdata).all()
+    fd = db.session.query(Surveydata).all()
     return render_template('raw.html', surveydata=fd)
+
+@app.route("/games")
+def show_games():
+    fd = db.session.query(Games).all()
+    return render_template('games.html', surveydata=fd)
 
 
 @app.route("/result")
 def show_result():
-    fd_list = db.session.query(Formdata).all()
-    females = Formdata.query.filter_by(gender='F').count()
-    males = Formdata.query.filter_by(gender='M').count()
+    fd_list = db.session.query(Surveydata).all()
+    females = Surveydata.query.filter_by(gender='F').count()
+    males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
 
-    ageGroup1 = Formdata.query.filter_by(age=1).count()
-    ageGroup2 = Formdata.query.filter_by(age=2).count()
-    ageGroup3 = Formdata.query.filter_by(age=3).count()
-    ageGroup4 = Formdata.query.filter_by(age=4).count()
-    ageGroup5 = Formdata.query.filter_by(age=5).count()
+    ageGroup1 = Surveydata.query.filter_by(age=1).count()
+    ageGroup2 = Surveydata.query.filter_by(age=2).count()
+    ageGroup3 = Surveydata.query.filter_by(age=3).count()
+    ageGroup4 = Surveydata.query.filter_by(age=4).count()
+    ageGroup5 = Surveydata.query.filter_by(age=5).count()
     ageGroup_list = [ageGroup1, ageGroup2, ageGroup3, ageGroup4, ageGroup5]
 
-    educationGroup1 = Formdata.query.filter_by(education=1).count()
-    educationGroup2 = Formdata.query.filter_by(education=2).count()
-    educationGroup3 = Formdata.query.filter_by(education=3).count()
-    educationGroup4 = Formdata.query.filter_by(education=4).count()
+    educationGroup1 = Surveydata.query.filter_by(education=1).count()
+    educationGroup2 = Surveydata.query.filter_by(education=2).count()
+    educationGroup3 = Surveydata.query.filter_by(education=3).count()
+    educationGroup4 = Surveydata.query.filter_by(education=4).count()
     educationGroup_list =[educationGroup1, educationGroup2, educationGroup3, educationGroup4]
 
-    single = Formdata.query.filter_by(single_multi='sp').count()
-    multi = Formdata.query.filter_by(single_multi='mp').count()
-    single_multi = Formdata.query.filter_by(single_multi='msp').count()
+    single = Surveydata.query.filter_by(single_multi='sp').count()
+    multi = Surveydata.query.filter_by(single_multi='mp').count()
+    single_multi = Surveydata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
 
-    gametimeGroup1 = Formdata.query.filter_by(education=1).count()
-    gametimeGroup2 = Formdata.query.filter_by(education=2).count()
-    gametimeGroup3 = Formdata.query.filter_by(education=3).count()
-    gametimeGroup4 = Formdata.query.filter_by(education=4).count()
-    gametimeGroup5 = Formdata.query.filter_by(education=5).count()
+    gametimeGroup1 = Surveydata.query.filter_by(education=1).count()
+    gametimeGroup2 = Surveydata.query.filter_by(education=2).count()
+    gametimeGroup3 = Surveydata.query.filter_by(education=3).count()
+    gametimeGroup4 = Surveydata.query.filter_by(education=4).count()
+    gametimeGroup5 = Surveydata.query.filter_by(education=5).count()
     gametimeGroup_list = [gametimeGroup1,gametimeGroup2,gametimeGroup3,gametimeGroup4,gametimeGroup5]
     return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
@@ -118,7 +160,6 @@ def save():
     education = request.form['education']
     single_multi = request.form['single_multi']
     gametime = request.form['gametime']
-    multi_titles = request.form['multi_titles[]']
     communication = request.form['communication']
     resign = request.form['resign']
     resign_freq = request.form['resign_freq']
@@ -135,11 +176,14 @@ def save():
     bonding = request.form['bonding']
     meeting = request.form['meeting']
 
+    # Checkbox Form data
+    games = request.form.getlist('multi_titles[]')
 
     # Save the data
-    fd = Formdata(gender, age, education, single_multi, gametime, multi_titles, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting)
+    games_dbRow = Games(games)
+    survey_dbRow = Surveydata(gender, age, education, single_multi, gametime, games_dbRow, communication, resign, resign_freq, resign_choice, salt, salt_self, griefing, griefing_self, guild, guild_why, teamspeak, shyness_factor, reallife_contact, bonding, meeting)
 
-    db.session.add(fd)
+    db.session.add(survey_dbRow)
     db.session.commit()
 
     return redirect('/')
