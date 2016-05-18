@@ -47,6 +47,15 @@
           ['Single/Multiplayer', {{smp[2]}}],
         ]);
 
+        var gametime = google.visualization.arrayToDataTable([
+          ['Wiek', 'Ilosc'],
+          ['Poniżej godziny', {{gametimeGroup[0]}}],
+          ['1-2 godziny', {{gametimeGroup[1]}}],
+          ['3-4 godziny', {{gametimeGroup[2]}}],
+          ['5-6 godziny', {{gametimeGroup[3]}}],
+          ['7 godzin lub więcej', {{gametimeGroup[4]}}],
+        ]);
+
         var options_gender= {
           title: 'Plec'
         };
@@ -62,16 +71,21 @@
         var options_smp = {
             title: 'Preferowane typy gier'
         };
+        var options_gametime = {
+          title: 'Czas spędzony na graniu'
+        };
 
         var chart_gender = new google.visualization.PieChart(document.getElementById('gender'));
         var chart_age = new google.visualization.PieChart(document.getElementById('age'));
         var chart_education = new google.visualization.PieChart(document.getElementById('education'));
         var chart_smp = new google.visualization.PieChart(document.getElementById('smp'));
+        var chart_gametime = new google.visualization.PieChart(document.getElementById('gametime'));
 
         chart_gender.draw(gender, options_gender);
         chart_age.draw(age, options_age);
         chart_education.draw(education, options_education);
         chart_smp.draw(smp, options_smp);
+        chart_gametime.draw(gametime, options_gametime);
       }
 
     </script>
@@ -79,6 +93,7 @@
     <div id="age" style="width: 900px; height: 500px;"></div>
     <div id="education" style="width: 900px; height: 500px;"></div>
     <div id="smp" style="width: 900px; height: 500px;"></div>
-
+    <div id="gametime" style="width: 900px; height: 500px;"></div>
+    
 </div>
 {% endblock %}

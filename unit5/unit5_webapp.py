@@ -100,7 +100,14 @@ def show_result():
     multi = Formdata.query.filter_by(single_multi='mp').count()
     single_multi = Formdata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
-    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list)
+
+    gametimeGroup1 = Formdata.query.filter_by(education=1).count()
+    gametimeGroup2 = Formdata.query.filter_by(education=2).count()
+    gametimeGroup3 = Formdata.query.filter_by(education=3).count()
+    gametimeGroup4 = Formdata.query.filter_by(education=4).count()
+    gametimeGroup5 = Formdata.query.filter_by(education=5).count()
+    gametimeGroup_list = [gametimeGroup1,gametimeGroup2,gametimeGroup3,gametimeGroup4,gametimeGroup5]
+    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 @app.route("/save", methods=['POST'])
