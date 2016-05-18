@@ -1,0 +1,42 @@
+<!-- extend base layout -->
+<div class="container theme-showcase" role="main">
+
+{% extends "base.html" %}
+
+    {% block content %}
+
+    <div class="page-header">
+        <h1>Guild_why</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>meeting</th>
+            <th>team</th>
+            <th>benefits</th>
+            <th>other</th>
+            <th>na</th>
+            <th># ankietowanego</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for element in surveydata %}
+        <tr>
+            <td>{{ element.id }}</td>
+            <td>{{ element.meeting }}</td>
+            <td>{{ element.team }}</td>
+            <td>{{ element.benefits }}</td>
+            <td>{{ element.other }}</td>
+            <td>{{ element.na}}</td>
+            <td>{{ element.surveydata_id }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}
+</div>
