@@ -9,7 +9,7 @@
     <h3>Uprzejmie prosimy o szczere i przemyślane odpowiedzi</h3>
 </div>
 
-<form role="form" action="/save" method="post">
+<form role="form" action="/save" method="post" id="survey">
 
     <div class="panel-group" id="accordion">
 
@@ -64,10 +64,10 @@
                         </select>
                     </div><br>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" onclick="ScrollTop()">
-                        <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
+                    <a id="accordion_btn_1" data-toggle="collapse" data-parent="#accordion" href="#collapse2" onclick="ScrollTop()">
+                        <button type="button" class="btn btn-success">Przejdź dalej</button>
                     </a>
-
+                    <button id="accordion_submit_1" type="submit" class="btn btn-success hidden" onclick="validateForm(1)">Zatwierdź i przejdź dalej</button>
                 </div>
             </div>
         </div>
@@ -206,9 +206,10 @@
                         </div><br>
                     </div>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" onclick="ScrollTop()">
-                        <button type="button" class="btn btn-success">Zatwierdź i przejdź dalej</button>
+                    <a id="accordion_btn_2" data-toggle="collapse" data-parent="#accordion" href="#collapse3" onclick="ScrollTop()">
+                        <button type="button" class="btn btn-success">Przejdź dalej</button>
                     </a>
+                    <button id="accordion_submit_2" type="submit" class="btn btn-success hidden" onclick="validateForm(2)">Zatwierdź i przejdź dalej</button>
 
                  </div>
             </div>
@@ -586,9 +587,7 @@
 
                     </div>
 
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="ScrollTop()">
-                        <button type="button" class="btn btn-success">Zatwierdź i prześlij ankietę</button>
-                    </a>
+                    <button id="accordion_submit_3" type="submit" class="btn btn-success" onclick="validateForm(3)">Zatwierdź i prześlij ankietę</button>
 
                 </div>
             </div>
@@ -596,9 +595,6 @@
 
     </div>
 
-
-
-    <button type="submit" class="btn btn-default">Save</button>
 </form>
 
     <script src="static/js/form.js"></script>

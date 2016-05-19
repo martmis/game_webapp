@@ -14,6 +14,58 @@ var multiTitlesCheckboxGrpID = 'MultiTitlesCheckboxGrp';
 var resignChoiceCheckboxGrpID = 'ResignChoiceCheckboxGrp';
 var guildWhyCheckboxGrpID = 'GuildWhyCheckboxGrp';
 
+var survey = document.getElementById("survey");
+var surveyCollapse2 = "collapse2";
+var surveyCollapse3 = "collapse3";
+var accordionBtn1 = document.getElementById("accordion_btn_1");
+var accordionBtn2 = document.getElementById("accordion_btn_2");
+var accordionSubmit1 = document.getElementById("accordion_submit_1");
+var accordionSubmit2 = document.getElementById("accordion_submit_2");
+
+
+function validateInitialization(){
+    accordionBtn1.classList.add("hidden");
+    accordionBtn2.classList.add("hidden");
+    accordionSubmit1.classList.remove("hidden");
+    accordionSubmit2.classList.remove("hidden");
+    survey.onsubmit = function(){
+        return false;
+    }
+    setRequireAttrToAll(surveyCollapse2,false);
+    setRequireAttrToAll(surveyCollapse3,false);
+}
+
+function validateForm(buttonNumber){
+    switch(buttonNumber){
+        case 1:
+            if(survey.checkValidity()) {
+                accordionBtn1.click();
+                setTimeout(function(){
+                    setRequireAttrToAll(surveyCollapse2, true);
+                    checkboxRequireAll();
+                }, 100);
+            }
+            break;
+        case 2:
+            setRequireAttrToAll(surveyCollapse3, false);
+            if(survey.checkValidity()) {
+                accordionBtn2.click();
+                setTimeout(function(){
+                    setRequireAttrToAll(surveyCollapse3, true);
+                    showGamerDiv();
+                    showResignDiv();
+                    showGuildDiv();
+                }, 100);
+            }
+            break;
+        case 3:
+            if(survey.checkValidity()) {
+                survey.submit();
+            }
+            break;
+    }
+}
+
 function showGamerDiv(){
     var inputsAll = document.querySelectorAll('#' + gamerTypeID + ' input');
     var input;
@@ -41,7 +93,6 @@ function showGamerDiv(){
         }
     }
 }
-
 
 function showSingleDiv(action){
 
@@ -196,6 +247,8 @@ function uncheckAll(divClass, actionString) {
             for(i =0; i< inputsHidden.length;i++){
                 input = inputsHidden[i];
                 input.checked = true;
+                input.required = true;
+                console.log(input.required);
             }
             break;
 
@@ -203,6 +256,8 @@ function uncheckAll(divClass, actionString) {
             for(i =0; i< inputsHidden.length;i++){
                 input = inputsHidden[i];
                 input.checked = false;
+                input.required = false;
+                console.log(input.required);
             }
             break;
 
@@ -233,6 +288,7 @@ function checkboxRequire(divID) {
         }
         else if (i == inputsAll.length - 1){
             setRequireAttrToAll(divID, true);
+            input.required = false;
         }
     }
 }
@@ -247,6 +303,12 @@ function setRequireAttrToAll(divID, actionBool){
         input = inputsAll[i];
         input.required = actionBool;
     }
+
+    inputsAll = document.querySelectorAll('#' + divID + ' select');
+    for(i =0; i< inputsAll.length;i++){
+        input = inputsAll[i];
+        input.required = actionBool;
+    }
 }
 
 window.onload = function() {
@@ -255,4 +317,5 @@ window.onload = function() {
     showSingleDiv('hide');
     showMultiDiv('hide');
     checkboxRequireAll();
+    validateInitialization();
 }
