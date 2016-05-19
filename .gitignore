@@ -1,2 +1,3 @@
 #PyCharm IDE folder
 .idea/
+__pycache__/
