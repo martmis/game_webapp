@@ -320,3 +320,13 @@ window.onload = function() {
     checkboxRequireAll();
     validateInitialization();
 }
+
+window.onscroll = function(){
+    var navbar = document.getElementsByClassName('navbar')[0]
+    if(this.scrollY > 200){
+        navbar.classList.add('hidden');
+    }
+    else {
+        navbar.classList.remove('hidden');
+    }
+}
