@@ -55,13 +55,46 @@ def show_result():
     single_multi = Surveydata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
 
-    gametimeGroup1 = Surveydata.query.filter_by(education=1).count()
-    gametimeGroup2 = Surveydata.query.filter_by(education=2).count()
-    gametimeGroup3 = Surveydata.query.filter_by(education=3).count()
-    gametimeGroup4 = Surveydata.query.filter_by(education=4).count()
-    gametimeGroup5 = Surveydata.query.filter_by(education=5).count()
+    gametimeGroup1 = Surveydata.query.filter_by(gametime=1).count()
+    gametimeGroup2 = Surveydata.query.filter_by(gametime=2).count()
+    gametimeGroup3 = Surveydata.query.filter_by(gametime=3).count()
+    gametimeGroup4 = Surveydata.query.filter_by(gametime=4).count()
+    gametimeGroup5 = Surveydata.query.filter_by(gametime=5).count()
     gametimeGroup_list = [gametimeGroup1,gametimeGroup2,gametimeGroup3,gametimeGroup4,gametimeGroup5]
-    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+
+    gtDOTA = Games.query.filter_by(dota=True).count()
+    gtLOL = Games.query.filter_by(lol=True).count()
+    gtHOTS = Games.query.filter_by(hots=True).count()
+    gtCS = Games.query.filter_by(cs=True).count()
+    gtCOD = Games.query.filter_by(cod=True).count()
+    gtBF = Games.query.filter_by(bf=True).count()
+    gtGTA = Games.query.filter_by(gta=True).count()
+    gtFIFA = Games.query.filter_by(fifa=True).count()
+    gtMC = Games.query.filter_by(minecraft=True).count()
+    gtHS = Games.query.filter_by(hs=True).count()
+    gtSC2 = Games.query.filter_by(sc2=True).count()
+    gtWOW = Games.query.filter_by(wow=True).count()
+    gtOTHER = Games.query.filter_by(other=True).count()
+    gt_list = [gtDOTA, gtLOL, gtHOTS, gtCS, gtCOD, gtBF, gtGTA, gtFIFA, gtMC, gtHS, gtSC2, gtWOW, gtOTHER]
+
+    resignGroup1 = Surveydata.query.filter_by(resign="no").count()
+    resignGroup2 = Surveydata.query.filter_by(resign_freq=1).count()
+    resignGroup3 = Surveydata.query.filter_by(resign_freq=2).count()
+    resignGroup4 = Surveydata.query.filter_by(resign_freq=3).count()
+    resignGroup5 = Surveydata.query.filter_by(resign_freq=4).count()
+    resignGroup6 = Surveydata.query.filter_by(resign_freq=5).count()
+    resignGroup_list = [resignGroup1, resignGroup2, resignGroup3, resignGroup4, resignGroup5, resignGroup6]
+
+    resignChoiceGroup1 = Resign.query.filter_by(sport=True).count()
+    resignChoiceGroup2 = Resign.query.filter_by(family=True).count()
+    resignChoiceGroup3 = Resign.query.filter_by(friends=True).count()
+    resignChoiceGroup4 = Resign.query.filter_by(chores=True).count()
+    resignChoiceGroup5 = Resign.query.filter_by(work=True).count()
+    resignChoiceGroup6 = Resign.query.filter_by(other=True).count()
+    resignChoiceGroup_list = [resignChoiceGroup1,resignChoiceGroup2,resignChoiceGroup3,resignChoiceGroup4,resignChoiceGroup5,resignChoiceGroup6]
+
+
+    return render_template('result.html', resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 @app.route("/save", methods=['POST'])
