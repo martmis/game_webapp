@@ -243,21 +243,22 @@ function uncheckAll(divClass, actionString) {
             for(i =0; i< inputsAll.length;i++){
                 input = inputsAll[i];
                 input.checked = false;
+                input.required = false;
             }
             for(i =0; i< inputsHidden.length;i++){
                 input = inputsHidden[i];
                 input.checked = true;
-                input.required = true;
-                console.log(input.required);
             }
             break;
 
         case 'show':
+            for(i =0; i< inputsAll.length;i++){
+                input = inputsAll[i];
+                input.required = true;
+            }
             for(i =0; i< inputsHidden.length;i++){
                 input = inputsHidden[i];
                 input.checked = false;
-                input.required = false;
-                console.log(input.required);
             }
             break;
 

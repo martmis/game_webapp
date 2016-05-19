@@ -5,8 +5,15 @@
 {% block content %}
 
 <div class="page-header">
-    <h1>"Badanie interakcji społecznych w grach komputerowych"</h1>
-    <h3>Uprzejmie prosimy o szczere i przemyślane odpowiedzi</h3>
+
+    {% if request.args.get('error') == "true" %}
+        <h1>Ups! Wygląda na to, że Twoja odpowiedź nie została zapisana!</h1>
+        <h3>Prosimy o ponowne wypełnienie kwestionariusza</h3>
+    {% else %}
+        <h1>"Badanie interakcji społecznych w grach komputerowych"</h1>
+        <h3>Uprzejmie prosimy o szczere i przemyślane odpowiedzi</h3>
+    {% endif %}
+
 </div>
 
 <form role="form" action="/save" method="post" id="survey">
@@ -284,11 +291,6 @@
                                   <input type="radio" name="resign_freq" value="5">częściej niż raz w tygodniu
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="resign_freq" value="-1">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group" id="ResignChoiceCheckboxGrp">
@@ -354,11 +356,6 @@
                                   <input type="radio" name="salt" value="no">Nie
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="salt" value="NA">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -375,16 +372,11 @@
                                   <input type="radio" name="salt_self" value="no">Nie
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="salt_self" value="NA">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group">
                             <label>
-                                 Czy zdarzyło Ci się być świadkiem uprzykrzania gry przez pojedynczą osobę lub grupę osób
+                                Czy zdarzyło Ci się być świadkiem uprzykrzania gry przez pojedynczą osobę lub grupę osób
                                 (np. poprzez przeszkadzanie członkom swojej drużyny, celowe wspieranie drużyny przeciwnej)?
                             </label><br>
                             <div class="radio">
@@ -395,11 +387,6 @@
                             <div class="radio">
                                 <label>
                                   <input type="radio" name="griefing" value="no">Nie
-                                </label>
-                            </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="griefing" value="NA">Nie dotyczy
                                 </label>
                             </div>
                         </div><br>
@@ -418,11 +405,6 @@
                                   <input type="radio" name="griefing_self" value="no">Nie
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="griefing_self" value="NA">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -437,11 +419,6 @@
                             <div class="radio">
                                 <label>
                                   <input type="radio" name="guild" value="no" onclick="showGuildDiv()">Nie
-                                </label>
-                            </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="guild" value="NA">Nie dotyczy
                                 </label>
                             </div>
                         </div><br>
@@ -492,11 +469,6 @@
                                       <input type="radio" name="teamspeak" value="no">Nie
                                     </label>
                                 </div>
-                                <div class="radio hidden">
-                                    <label>
-                                      <input type="radio" name="teamspeak" value="NA">Nie dotyczy
-                                    </label>
-                                </div>
                             </div><br>
 
                         </div>
@@ -515,11 +487,6 @@
                                   <input type="radio" name="shyness_factor" value="no">Nie
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="shyness_factor" value="NA">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -534,11 +501,6 @@
                             <div class="radio">
                                 <label>
                                   <input type="radio" name="reallife_contact" value="no">Nie
-                                </label>
-                            </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="reallife_contact" value="NA">Nie dotyczy
                                 </label>
                             </div>
                         </div><br>
@@ -557,11 +519,6 @@
                                   <input type="radio" name="bonding" value="no">Nie
                                 </label>
                             </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="bonding" value="NA">Nie dotyczy
-                                </label>
-                            </div>
                         </div><br>
 
                         <div class="form-group">
@@ -576,11 +533,6 @@
                             <div class="radio">
                                 <label>
                                   <input type="radio" name="meeting" value="no">Nie
-                                </label>
-                            </div>
-                            <div class="radio hidden">
-                                <label>
-                                  <input type="radio" name="meeting" value="NA">Nie dotyczy
                                 </label>
                             </div>
                         </div><br>
