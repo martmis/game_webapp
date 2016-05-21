@@ -93,6 +93,16 @@
           ['inne', {{resignChoice[5]}}],
         ]);
 
+        var guildWhy = google.visualization.arrayToDataTable([
+          ['Powód', 'Ilosc'],
+          ['Nie należe do gildii', {{guildWhy[0]}}],
+          ['Tak, ponieważ chce poznać nowe osoby', {{guildWhy[1]}}],
+          ['Tak, ponieważ chce znaleźć kompanów do wspólnej rozgrywki', {{guildWhy[2]}}],
+          ['Tak, z powodu otrzymania benefitów z tytułu członkostwa', {{guildWhy[3]}}],
+          ['Inne powody', {{guildWhy[4]}}],
+        ]);
+
+
         var options_gender= {
           title: 'Płeć'
         };
@@ -131,15 +141,19 @@
         var options_resignChoice= {
           title: 'Z czego ankietowani rezygnowali na rzecz gry?'
         };
+         var options_guildWhy= {
+          title: 'Czy należysz do gildii?'
+        };
 
         var chart_gender = new google.visualization.PieChart(document.getElementById('gender'));
         var chart_age = new google.visualization.PieChart(document.getElementById('age'));
         var chart_education = new google.visualization.PieChart(document.getElementById('education'));
         var chart_smp = new google.visualization.PieChart(document.getElementById('smp'));
         var chart_gametime = new google.visualization.PieChart(document.getElementById('gametime'));
-        var chart_gametitles = new google.visualization.ColumnChart(document.getElementById('gametitles'))
+        var chart_gametitles = new google.visualization.ColumnChart(document.getElementById('gametitles'));
         var chart_resign = new google.visualization.PieChart(document.getElementById('resign'));
-        var chart_resignChoice = new google.visualization.ColumnChart(document.getElementById('resignChoice'))
+        var chart_resignChoice = new google.visualization.ColumnChart(document.getElementById('resignChoice'));
+        var chart_guildWhy = new google.visualization.ColumnChart(document.getElementById('guildWhy'))
 
         chart_gender.draw(gender, options_gender);
         chart_age.draw(age, options_age);
@@ -149,6 +163,7 @@
         chart_gametitles.draw(gametitles, options_gametitles);
         chart_resign.draw(resign, options_resign);
         chart_resignChoice.draw(resignChoice, options_resignChoice);
+        chart_guildWhy.draw(guildWhy, options_guildWhy);
       }
 
     </script>
@@ -160,6 +175,7 @@
     <div id="gametitles"></div>
     <div id="resign" style="width: 900px; height: 500px;"></div>
     <div id="resignChoice"></div>
+    <div id="guildWhy"></div>
 
     <div class="div-multi">
                         <div class="form-group" id="MultiTitlesCheckboxGrp">
@@ -233,5 +249,21 @@
                             </div>
                         </div><br>
                     </div>
+    <!-- DOTA -->
+    {{DotaaSatl}}
+    <!-- LOL -->
+    {{lolSatl}}
+    <!-- HOTS -->
+    <!-- CS -->
+    <!-- cod -->
+    <!-- bf -->
+    <!-- GTA -->
+    <!-- fifa -->
+    <!-- minecraft -->
+    <!-- hs -->
+    <!-- sc2 -->
+    <!-- wow -->
+    <!-- wszystkie -->
+
 </div>
 {% endblock %}

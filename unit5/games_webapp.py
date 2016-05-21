@@ -32,7 +32,8 @@ def show_guild():
 
 @app.route("/result")
 def show_result():
-    fd_list = db.session.query(Surveydata).all()
+    fd_list = db.session.query(Games).all()
+
     females = Surveydata.query.filter_by(gender='F').count()
     males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
@@ -93,8 +94,14 @@ def show_result():
     resignChoiceGroup6 = Resign.query.filter_by(other=True).count()
     resignChoiceGroup_list = [resignChoiceGroup1,resignChoiceGroup2,resignChoiceGroup3,resignChoiceGroup4,resignChoiceGroup5,resignChoiceGroup6]
 
+    guild = Surveydata.query.filter_by(guild="no").count()
+    guildWhy1 = Guild.query.filter_by(meeting=True).count()
+    guildWhy2 = Guild.query.filter_by(team=True).count()
+    guildWhy3 = Guild.query.filter_by(benefits=True).count()
+    guildWhy4 = Guild.query.filter_by(other=True).count()
+    guildWhy_list = [guild, guildWhy1, guildWhy2, guildWhy3, guildWhy4]
 
-    return render_template('result.html', resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+    return render_template('result.html', guildWhy =guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 @app.route("/save", methods=['POST'])
