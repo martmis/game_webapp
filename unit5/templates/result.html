@@ -48,7 +48,7 @@
         ]);
 
         var gametime = google.visualization.arrayToDataTable([
-          ['Wiek', 'Ilosc'],
+          ['Czas', 'Ilosc'],
           ['Poniżej godziny', {{gametimeGroup[0]}}],
           ['1-2 godziny', {{gametimeGroup[1]}}],
           ['3-4 godziny', {{gametimeGroup[2]}}],
@@ -56,8 +56,76 @@
           ['7 godzin lub więcej', {{gametimeGroup[4]}}],
         ]);
 
+        var gametitles = google.visualization.arrayToDataTable([
+          ['Gra', 'Ilosc graczy',{ role: 'annotation' } ],
+          ['Heros of the Storm', {{gt[2]}}, 'HOTS'],
+          ['League of Legends', {{gt[1]}},'LoL'],
+          ['DOTA 2', {{gt[0]}},'DOTA 2'],
+          ['gry z serii Counter Strike', {{gt[3]}}, 'CS'],
+          ['gry z serii Call of Duty', {{gt[4]}},'CoD'],
+          ['gry z serii Battlefield', {{gt[5]}}, 'BF' ],
+          ['Grand Theft Auto V', {{gt[6]}}, 'GTA V'],
+          ['gry z serii FIFA', {{gt[7]}},'FIFA'],
+          ['Minecraft', {{gt[8]}},'Minecraft'],
+          ['Hearthstone', {{gt[9]}},'HS'],
+          ['Starcraft 2', {{gt[10]}},'SC 2'],
+          ['World of Warcraft', {{gt[11]}},'WoW'],
+          ['Inne', {{gt[12]}},'Inne'],
+        ]);
+
+        var resign = google.visualization.arrayToDataTable([
+          ['Czestotliwosc', 'Ilosc'],
+          ['nigdy mi sie to nie zdarzyło', {{resign[0]}}],
+          ['rzadziej niż raz w roku', {{resign[1]}}],
+          ['rzadko (kilka razy w roku)', {{resign[2]}}],
+          ['sporadycznie(raz w miesiącu)', {{resign[3]}}],
+          ['często(kilka razy w miesiącu)', {{resign[4]}}],
+          ['częściej niż raz w tygodniu', {{resign[5]}}],
+        ]);
+
+        var resignChoice = google.visualization.arrayToDataTable([
+          ['Powód', 'Ilosc'],
+          ['z aktywności fizycznej', {{resignChoice[0]}}],
+          ['z czasu spędzonego z rodziną', {{resignChoice[1]}}],
+          ['z czasu spędzonego z przyjaciółmi lub znajomymi', {{resignChoice[2]}}],
+          ['z obowiązków domowych', {{resignChoice[3]}}],
+          ['ze szkoły lub pracy', {{resignChoice[4]}}],
+          ['inne', {{resignChoice[5]}}],
+        ]);
+
+        var guildWhy = google.visualization.arrayToDataTable([
+          ['Powód', 'Ilosc'],
+          ['Nie należe do gildii', {{guildWhy[0]}}],
+          ['Tak, ponieważ chce poznać nowe osoby', {{guildWhy[1]}}],
+          ['Tak, ponieważ chce znaleźć kompanów do wspólnej rozgrywki', {{guildWhy[2]}}],
+          ['Tak, z powodu otrzymania benefitów z tytułu członkostwa', {{guildWhy[3]}}],
+          ['Inne powody', {{guildWhy[4]}}],
+        ]);
+
+        var salt = google.visualization.arrayToDataTable([
+          ['czynnosc', 'Ilosc'],
+          ['Nigdy nie byłem świadkiem takiego zachowania ', {{salt[1]}}],
+          ['Byłem świadkiem takiego zachowania', {{salt[0]}}],
+          ['zdarzyło mi się w ten sposób krytykować zachowanie lub umiejętności innego gracza', {{salt[2]}}],
+        ]);
+
+        var griefing = google.visualization.arrayToDataTable([
+          ['czynnosc', 'Ilosc'],
+          ['Nigdy nie byłem świadkiem takiego zachowania ', {{salt[5]}}],
+          ['Byłem świadkiem takiego zachowania', {{salt[3]}}],
+          ['zdarzyło mi się w ten sposób zachowywać', {{salt[4]}}],
+        ]);
+
+        var communication = google.visualization.arrayToDataTable([
+          ['Czynnosc', 'Ilosc'],
+          ['Rozmawiam z ludźmi poznanymi w grze (czat lub komunikacja głosowa)', {{communication[0]}}],
+          ['Kontaktuję się z poznanymi ludźmi poza grą', {{communication[1]}}],
+          ['Utrzymuję kontakt z ludźmi poznanymi w grze po zaprzestaniu gry', {{communication[2]}}],
+          ['Zdarzyło mi się lub planuje spotkać się z ludźmi poznanymi w grze', {{communication[3]}}],
+        ]);
+
         var options_gender= {
-          title: 'Plec'
+          title: 'Płeć'
         };
 
         var options_age = {
@@ -75,17 +143,66 @@
           title: 'Czas spędzony na graniu'
         };
 
+        var options_gametitles= {
+          title: 'Tytuly gier',
+          label: 'none'
+        };
+
+        var options_resign= {
+          title: 'Jak często rezygnujesz z obowiązków na rzecz gry?',
+          slices: {  1: {offset: 0.15},
+                     2: {offset: 0.15},
+                     3: {offset: 0.15},
+                     4: {offset: 0.15},
+                     5: {offset: 0.15},
+          },
+          pieStartAngle: 100,
+        };
+
+        var options_resignChoice= {
+          title: 'Z czego ankietowani rezygnowali na rzecz gry?'
+        };
+         var options_guildWhy= {
+          title: 'Czy należysz do gildii?'
+        };
+
+        var options_salt= {
+          title: 'Czy zdarzyło Ci się być świadkiem agresywnego zachowania graczy ukierunkowanego na inną osobę lub grupę osób?'
+        };
+
+        var options_griefing= {
+          title: 'Czy zdarzyło Ci się być świadkiem uprzykrzania gry przez pojedynczą osobę lub grupę osób (np. poprzez przeszkadzanie członkom swojej drużyny, celowe wspieranie drużyny przeciwnej)?'
+        };
+
+         var options_communication= {
+          title: 'Komunikacja z ludźmi poznanymi podczas gry'
+        };
+
         var chart_gender = new google.visualization.PieChart(document.getElementById('gender'));
         var chart_age = new google.visualization.PieChart(document.getElementById('age'));
         var chart_education = new google.visualization.PieChart(document.getElementById('education'));
         var chart_smp = new google.visualization.PieChart(document.getElementById('smp'));
         var chart_gametime = new google.visualization.PieChart(document.getElementById('gametime'));
+        var chart_gametitles = new google.visualization.ColumnChart(document.getElementById('gametitles'));
+        var chart_resign = new google.visualization.PieChart(document.getElementById('resign'));
+        var chart_resignChoice = new google.visualization.ColumnChart(document.getElementById('resignChoice'));
+        var chart_guildWhy = new google.visualization.ColumnChart(document.getElementById('guildWhy'))
+        var chart_salt = new google.visualization.ColumnChart(document.getElementById('salt'));
+        var chart_griefing = new google.visualization.ColumnChart(document.getElementById('griefing'));
+        var chart_communication = new google.visualization.ColumnChart(document.getElementById('communication'));
 
         chart_gender.draw(gender, options_gender);
         chart_age.draw(age, options_age);
         chart_education.draw(education, options_education);
         chart_smp.draw(smp, options_smp);
         chart_gametime.draw(gametime, options_gametime);
+        chart_gametitles.draw(gametitles, options_gametitles);
+        chart_resign.draw(resign, options_resign);
+        chart_resignChoice.draw(resignChoice, options_resignChoice);
+        chart_guildWhy.draw(guildWhy, options_guildWhy);
+        chart_salt.draw(salt, options_salt);
+        chart_griefing.draw(griefing, options_griefing);
+        chart_communication.draw(communication, options_communication);
       }
 
     </script>
@@ -94,6 +211,103 @@
     <div id="education" style="width: 900px; height: 500px;"></div>
     <div id="smp" style="width: 900px; height: 500px;"></div>
     <div id="gametime" style="width: 900px; height: 500px;"></div>
-    
+    <div id="gametitles"></div>
+    <div id="resign" style="width: 900px; height: 500px;"></div>
+    <div id="resignChoice"></div>
+    <div id="guildWhy"></div>
+    <div id="salt"></div>
+    <div id="griefing"></div>
+    <div id="communication"></div>
+
+
+
+
+    <!-- DOTA
+    <div class="div-multi">
+                        <div class="form-group" id="MultiTitlesCheckboxGrp">
+                            <label>
+                                Wybierz grę na temat, której interesuje Cię dalsza statystyka.
+                            </label><br>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="dota" >DOTA 2
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="lol" > League of Legends
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="hots"> Heroes of the Storm
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="cs" > gry z serii Counter Strike
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="cod"> gry z serii Call of Duty
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="bf"> gry z serii Battlefield
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="gta"> Grand Theft Auto V
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="fifa"> gry z serii FIFA
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="minecraft"> Minecraft
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="hs"> Hearthstone
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="sc2"> Starcraft 2
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="wow"> World of Warcraft
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="gtitle" value="other" checked="checked"> Pokaż stastystyke ze wszystkich powyższych gier.
+                                </label>
+                            </div>
+                        </div><br>
+                    </div>
+     -->
+    <!-- LOL -->
+    <!-- HOTS -->
+    <!-- CS -->
+    <!-- cod -->
+    <!-- bf -->
+    <!-- GTA -->
+    <!-- fifa -->
+    <!-- minecraft -->
+    <!-- hs -->
+    <!-- sc2 -->
+    <!-- wow -->
+    <!-- wszystkie -->
+
 </div>
 {% endblock %}

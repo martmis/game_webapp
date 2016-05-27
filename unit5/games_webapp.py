@@ -32,7 +32,8 @@ def show_guild():
 
 @app.route("/result")
 def show_result():
-    fd_list = db.session.query(Surveydata).all()
+    fd_list = db.session.query(Games).all()
+
     females = Surveydata.query.filter_by(gender='F').count()
     males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
@@ -55,13 +56,68 @@ def show_result():
     single_multi = Surveydata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
 
-    gametimeGroup1 = Surveydata.query.filter_by(education=1).count()
-    gametimeGroup2 = Surveydata.query.filter_by(education=2).count()
-    gametimeGroup3 = Surveydata.query.filter_by(education=3).count()
-    gametimeGroup4 = Surveydata.query.filter_by(education=4).count()
-    gametimeGroup5 = Surveydata.query.filter_by(education=5).count()
+    gametimeGroup1 = Surveydata.query.filter_by(gametime=1).count()
+    gametimeGroup2 = Surveydata.query.filter_by(gametime=2).count()
+    gametimeGroup3 = Surveydata.query.filter_by(gametime=3).count()
+    gametimeGroup4 = Surveydata.query.filter_by(gametime=4).count()
+    gametimeGroup5 = Surveydata.query.filter_by(gametime=5).count()
     gametimeGroup_list = [gametimeGroup1,gametimeGroup2,gametimeGroup3,gametimeGroup4,gametimeGroup5]
-    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+
+    gtDOTA = Games.query.filter_by(dota=True).count()
+    gtLOL = Games.query.filter_by(lol=True).count()
+    gtHOTS = Games.query.filter_by(hots=True).count()
+    gtCS = Games.query.filter_by(cs=True).count()
+    gtCOD = Games.query.filter_by(cod=True).count()
+    gtBF = Games.query.filter_by(bf=True).count()
+    gtGTA = Games.query.filter_by(gta=True).count()
+    gtFIFA = Games.query.filter_by(fifa=True).count()
+    gtMC = Games.query.filter_by(minecraft=True).count()
+    gtHS = Games.query.filter_by(hs=True).count()
+    gtSC2 = Games.query.filter_by(sc2=True).count()
+    gtWOW = Games.query.filter_by(wow=True).count()
+    gtOTHER = Games.query.filter_by(other=True).count()
+    gt_list = [gtDOTA, gtLOL, gtHOTS, gtCS, gtCOD, gtBF, gtGTA, gtFIFA, gtMC, gtHS, gtSC2, gtWOW, gtOTHER]
+
+    resignGroup1 = Surveydata.query.filter_by(resign="no").count()
+    resignGroup2 = Surveydata.query.filter_by(resign_freq=1).count()
+    resignGroup3 = Surveydata.query.filter_by(resign_freq=2).count()
+    resignGroup4 = Surveydata.query.filter_by(resign_freq=3).count()
+    resignGroup5 = Surveydata.query.filter_by(resign_freq=4).count()
+    resignGroup6 = Surveydata.query.filter_by(resign_freq=5).count()
+    resignGroup_list = [resignGroup1, resignGroup2, resignGroup3, resignGroup4, resignGroup5, resignGroup6]
+
+    resignChoiceGroup1 = Resign.query.filter_by(sport=True).count()
+    resignChoiceGroup2 = Resign.query.filter_by(family=True).count()
+    resignChoiceGroup3 = Resign.query.filter_by(friends=True).count()
+    resignChoiceGroup4 = Resign.query.filter_by(chores=True).count()
+    resignChoiceGroup5 = Resign.query.filter_by(work=True).count()
+    resignChoiceGroup6 = Resign.query.filter_by(other=True).count()
+    resignChoiceGroup_list = [resignChoiceGroup1,resignChoiceGroup2,resignChoiceGroup3,resignChoiceGroup4,resignChoiceGroup5,resignChoiceGroup6]
+
+    guild = Surveydata.query.filter_by(guild="no").count()
+    guildWhy1 = Guild.query.filter_by(meeting=True).count()
+    guildWhy2 = Guild.query.filter_by(team=True).count()
+    guildWhy3 = Guild.query.filter_by(benefits=True).count()
+    guildWhy4 = Guild.query.filter_by(other=True).count()
+    guildWhy_list = [guild, guildWhy1, guildWhy2, guildWhy3, guildWhy4]
+
+    Salt = Surveydata.query.filter_by(salt="yes").count()
+    SaltNo = Surveydata.query.filter_by(salt="no").count()
+    SaltSelf = Surveydata.query.filter_by(salt_self="yes").count()
+    Griefing = Surveydata.query.filter_by(griefing="yes").count()
+    GriefingSelf = Surveydata.query.filter_by(griefing_self="yes").count()
+    GriefingNo = Surveydata.query.filter_by(griefing="no").count()
+    Salt_list =[Salt, SaltNo, SaltSelf, Griefing, GriefingSelf, GriefingNo]
+
+
+    ShynessFactor = Surveydata.query.filter_by(shyness_factor="yes").count()
+    ReallifeContact = Surveydata.query.filter_by(reallife_contact="yes").count()
+    Bonding = Surveydata.query.filter_by(bonding="yes").count()
+    Meeting = Surveydata.query.filter_by(meeting="yes").count()
+
+    Communication_list =[ShynessFactor, ReallifeContact, Bonding, Meeting]
+
+    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 def isFieldNA(fieldname, resultType = 'string'):
