@@ -101,7 +101,23 @@ def show_result():
     guildWhy4 = Guild.query.filter_by(other=True).count()
     guildWhy_list = [guild, guildWhy1, guildWhy2, guildWhy3, guildWhy4]
 
-    return render_template('result.html', guildWhy =guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+    Salt = Surveydata.query.filter_by(salt="yes").count()
+    SaltNo = Surveydata.query.filter_by(salt="no").count()
+    SaltSelf = Surveydata.query.filter_by(salt_self="yes").count()
+    Griefing = Surveydata.query.filter_by(griefing="yes").count()
+    GriefingSelf = Surveydata.query.filter_by(griefing_self="yes").count()
+    GriefingNo = Surveydata.query.filter_by(griefing="no").count()
+    Salt_list =[Salt, SaltNo, SaltSelf, Griefing, GriefingSelf, GriefingNo]
+
+
+    ShynessFactor = Surveydata.query.filter_by(shyness_factor="yes").count()
+    ReallifeContact = Surveydata.query.filter_by(reallife_contact="yes").count()
+    Bonding = Surveydata.query.filter_by(bonding="yes").count()
+    Meeting = Surveydata.query.filter_by(meeting="yes").count()
+
+    Communication_list =[ShynessFactor, ReallifeContact, Bonding, Meeting]
+
+    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 @app.route("/save", methods=['POST'])
