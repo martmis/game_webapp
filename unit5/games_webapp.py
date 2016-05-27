@@ -120,27 +120,40 @@ def show_result():
     return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
+def isFieldNA(fieldname, resultType = 'string'):
+    if (fieldname in request.form):
+        return request.form[fieldname]
+    else:
+        if(resultType == 'string'):
+            return 'NA'
+        if(resultType == 'int'):
+            return -1
+
 @app.route("/save", methods=['POST'])
 def save():
-    # Get data from FORM6
-    gender = request.form['gender']
-    age = request.form['age']
-    education = request.form['education']
-    single_multi = request.form['single_multi']
-    gametime = request.form['gametime']
-    communication = request.form['communication']
-    resign = request.form['resign']
-    resign_freq = request.form['resign_freq']
-    salt = request.form['salt']
-    salt_self = request.form['salt_self']
-    griefing = request.form['griefing']
-    griefing_self = request.form['griefing_self']
-    guild = request.form['guild']
-    teamspeak = request.form['teamspeak']
-    shyness_factor = request.form['shyness_factor']
-    reallife_contact = request.form['reallife_contact']
-    bonding = request.form['bonding']
-    meeting = request.form['meeting']
+    # Get data from form
+    try:
+        gender = request.form['gender']
+        age = request.form['age']
+        education = request.form['education']
+        single_multi = request.form['single_multi']
+        gametime = request.form['gametime']
+        communication = request.form['communication']
+        resign = request.form['resign']
+    except KeyError:
+        return redirect('/form?error=true')
+
+    resign_freq = isFieldNA('resign_freq', 'int')
+    salt = isFieldNA('salt')
+    salt_self = isFieldNA('salt_self')
+    griefing = isFieldNA('griefing')
+    griefing_self = isFieldNA('griefing_self')
+    guild = isFieldNA('guild')
+    teamspeak = isFieldNA('teamspeak')
+    shyness_factor = isFieldNA('shyness_factor')
+    reallife_contact = isFieldNA('reallife_contact')
+    bonding = isFieldNA('bonding')
+    meeting = isFieldNA('meeting')
 
     # Checkbox Form data
     multi_titles = request.form.getlist('multi_titles[]')
