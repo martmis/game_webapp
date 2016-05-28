@@ -38,6 +38,9 @@ def show_result():
     males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
 
+    all_records = Surveydata.query.count()
+    percentage_female = round(((females / all_records) * 100), 2)
+
     ageGroup1 = Surveydata.query.filter_by(age=1).count()
     ageGroup2 = Surveydata.query.filter_by(age=2).count()
     ageGroup3 = Surveydata.query.filter_by(age=3).count()
@@ -55,6 +58,10 @@ def show_result():
     multi = Surveydata.query.filter_by(single_multi='mp').count()
     single_multi = Surveydata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
+    percentage_single = round(((single / all_records) * 100), 2)
+    percentage_multi = round(((multi / all_records) * 100), 2)
+    percentage_singlemulti = round(((single_multi / all_records) * 100), 2)
+
 
     gametimeGroup1 = Surveydata.query.filter_by(gametime=1).count()
     gametimeGroup2 = Surveydata.query.filter_by(gametime=2).count()
@@ -117,7 +124,7 @@ def show_result():
 
     Communication_list =[ShynessFactor, ReallifeContact, Bonding, Meeting]
 
-    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list, percentage_female=percentage_female, percentage_multi=percentage_multi, percentage_single=percentage_single, percentage_singlemulti=percentage_singlemulti)
 
 
 def isFieldNA(fieldname, resultType = 'string'):

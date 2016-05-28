@@ -74,3 +74,19 @@ footer li img {
   height: 32px;
 }
 
+.container-fluid {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col-md-12.center {
+  text-align: center;
+}
+
+
+
+
