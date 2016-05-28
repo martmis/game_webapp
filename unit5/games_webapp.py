@@ -1,6 +1,21 @@
 # Load required modules, configure database, db class definitions
 from backend_config import *
 
+def count_num_queries(list, classname, maxCounter):
+    counter = 1
+    while (counter <= maxCounter):
+        if(classname == "age"):
+            list.append(Surveydata.query.filter_by(age=counter).count())
+        elif(classname == "education"):
+            list.append(Surveydata.query.filter_by(education=counter).count())
+        elif(classname == "gametime"):
+            list.append(Surveydata.query.filter_by(gametime=counter).count())
+        elif(classname == "resign"):
+            list.append(Surveydata.query.filter_by(resign_freq=counter).count())
+        else:
+            break
+        counter = counter + 1
+    return list
 
 @app.route("/")
 def welcome():
@@ -32,36 +47,81 @@ def show_guild():
 
 @app.route("/result")
 def show_result():
-    fd_list = db.session.query(Surveydata).all()
+    fd_list = db.session.query(Games).all()
+
     females = Surveydata.query.filter_by(gender='F').count()
     males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
 
-    ageGroup1 = Surveydata.query.filter_by(age=1).count()
-    ageGroup2 = Surveydata.query.filter_by(age=2).count()
-    ageGroup3 = Surveydata.query.filter_by(age=3).count()
-    ageGroup4 = Surveydata.query.filter_by(age=4).count()
-    ageGroup5 = Surveydata.query.filter_by(age=5).count()
-    ageGroup_list = [ageGroup1, ageGroup2, ageGroup3, ageGroup4, ageGroup5]
 
-    educationGroup1 = Surveydata.query.filter_by(education=1).count()
-    educationGroup2 = Surveydata.query.filter_by(education=2).count()
-    educationGroup3 = Surveydata.query.filter_by(education=3).count()
-    educationGroup4 = Surveydata.query.filter_by(education=4).count()
-    educationGroup_list =[educationGroup1, educationGroup2, educationGroup3, educationGroup4]
+    ageGroup_list = []
+    count_num_queries(ageGroup_list,"age", 5)
+
+    educationGroup_list = []
+    count_num_queries(educationGroup_list,"education",4)
+
+    gametimeGroup_list = []
+    count_num_queries(gametimeGroup_list,"gametime",5)
+
 
     single = Surveydata.query.filter_by(single_multi='sp').count()
     multi = Surveydata.query.filter_by(single_multi='mp').count()
     single_multi = Surveydata.query.filter_by(single_multi='msp').count()
     smp_list = [single, multi, single_multi]
 
-    gametimeGroup1 = Surveydata.query.filter_by(education=1).count()
-    gametimeGroup2 = Surveydata.query.filter_by(education=2).count()
-    gametimeGroup3 = Surveydata.query.filter_by(education=3).count()
-    gametimeGroup4 = Surveydata.query.filter_by(education=4).count()
-    gametimeGroup5 = Surveydata.query.filter_by(education=5).count()
-    gametimeGroup_list = [gametimeGroup1,gametimeGroup2,gametimeGroup3,gametimeGroup4,gametimeGroup5]
-    return render_template('result.html', data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
+
+
+    gtDOTA = Games.query.filter_by(dota=True).count()
+    gtLOL = Games.query.filter_by(lol=True).count()
+    gtHOTS = Games.query.filter_by(hots=True).count()
+    gtCS = Games.query.filter_by(cs=True).count()
+    gtCOD = Games.query.filter_by(cod=True).count()
+    gtBF = Games.query.filter_by(bf=True).count()
+    gtGTA = Games.query.filter_by(gta=True).count()
+    gtFIFA = Games.query.filter_by(fifa=True).count()
+    gtMC = Games.query.filter_by(minecraft=True).count()
+    gtHS = Games.query.filter_by(hs=True).count()
+    gtSC2 = Games.query.filter_by(sc2=True).count()
+    gtWOW = Games.query.filter_by(wow=True).count()
+    gtOTHER = Games.query.filter_by(other=True).count()
+    gt_list = [gtDOTA, gtLOL, gtHOTS, gtCS, gtCOD, gtBF, gtGTA, gtFIFA, gtMC, gtHS, gtSC2, gtWOW, gtOTHER]
+
+    resignGroup_list = []
+    resignGroup_list.append(Surveydata.query.filter_by(resign="no").count())
+    count_num_queries(resignGroup_list,"resign",5)
+
+    resignChoiceGroup1 = Resign.query.filter_by(sport=True).count()
+    resignChoiceGroup2 = Resign.query.filter_by(family=True).count()
+    resignChoiceGroup3 = Resign.query.filter_by(friends=True).count()
+    resignChoiceGroup4 = Resign.query.filter_by(chores=True).count()
+    resignChoiceGroup5 = Resign.query.filter_by(work=True).count()
+    resignChoiceGroup6 = Resign.query.filter_by(other=True).count()
+    resignChoiceGroup_list = [resignChoiceGroup1,resignChoiceGroup2,resignChoiceGroup3,resignChoiceGroup4,resignChoiceGroup5,resignChoiceGroup6]
+
+    guild = Surveydata.query.filter_by(guild="no").count()
+    guildWhy1 = Guild.query.filter_by(meeting=True).count()
+    guildWhy2 = Guild.query.filter_by(team=True).count()
+    guildWhy3 = Guild.query.filter_by(benefits=True).count()
+    guildWhy4 = Guild.query.filter_by(other=True).count()
+    guildWhy_list = [guild, guildWhy1, guildWhy2, guildWhy3, guildWhy4]
+
+    Salt = Surveydata.query.filter_by(salt="yes").count()
+    SaltNo = Surveydata.query.filter_by(salt="no").count()
+    SaltSelf = Surveydata.query.filter_by(salt_self="yes").count()
+    Griefing = Surveydata.query.filter_by(griefing="yes").count()
+    GriefingSelf = Surveydata.query.filter_by(griefing_self="yes").count()
+    GriefingNo = Surveydata.query.filter_by(griefing="no").count()
+    Salt_list =[Salt, SaltNo, SaltSelf, Griefing, GriefingSelf, GriefingNo]
+
+
+    ShynessFactor = Surveydata.query.filter_by(shyness_factor="yes").count()
+    ReallifeContact = Surveydata.query.filter_by(reallife_contact="yes").count()
+    Bonding = Surveydata.query.filter_by(bonding="yes").count()
+    Meeting = Surveydata.query.filter_by(meeting="yes").count()
+
+    Communication_list =[ShynessFactor, ReallifeContact, Bonding, Meeting]
+
+    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list)
 
 
 def isFieldNA(fieldname, resultType = 'string'):
