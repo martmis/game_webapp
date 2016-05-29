@@ -205,7 +205,14 @@
         <div class="row">
             <div class="col-md-4">
                 <tbody>
-                    <p>W naszej ankiecie wzieło udział <b>{{ percentage_female }}%</b> kobiet! A mówi się, że dziewczyny w ogóle nie grają "w komputer".</p>
+                    <p>
+                        W naszej ankiecie wzieło udział <b>{{ percentage_female }}%</b> kobiet!
+                        {% if percentage_female > 30 %}
+                            A mówi się, że dziewczyny w ogóle nie grają "w komputer".
+                        {% else %}
+                            Chyba jednak prawdą jest, że gry to głównie męska zabawa...
+                        {% endif %}
+                    </p>
                 </tbody>
             </div>
             <div class="col-md-8">
@@ -217,7 +224,16 @@
         <p>Podejrzewamy, że gry najpopularniejsze są wśród młodych. Sprawdźmy czy to prawda.</p>
         <div id="age" style="width: 900px; height: 500px;"></div>
 
-        <p> Wiemy już, że graczami głównie są młodzi, ale czy piękni i wykształceni?</p>
+        <p>
+             {% if percentage_young >= 50 %}
+                Gracze poniżej trzydziestki stanowili <b>{{ percentage_young }}%</b> wszystkich respondentów!
+                 Wiemy już, że graczami głównie są ludzie młodzi, ale czy piękni i wykształceni?
+             {% else %}
+                Prawdziwe jest wyłącznie stwierdzenie: Roześlij ankietę a stereotypy się obalą (same, naturalnie).
+                 Czy starsze pokolenie wie co znaczy "studenckie życie"?
+             {% endif %}
+
+        </p>
         <div id="education" style="width: 900px; height: 500px;"  ></div>
             </div>
 
