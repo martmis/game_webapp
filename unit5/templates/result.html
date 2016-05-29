@@ -41,13 +41,6 @@
           ['wyższe', {{educationGroup[3]}}],
         ]);
 
-        /*var smp = google.visualization.arrayToDataTable([
-          ['Preferowane typy gier', 'Ilosc'],
-          ['Singleplayer', {{smp[0]}}],
-          ['Multiplayer', {{smp[1]}}],
-          ['Single/Multiplayer', {{smp[2]}}],
-        ]);*/
-
         var gametime = google.visualization.arrayToDataTable([
       ['Czas spedzony na graniu', 'Ilosc'],
           [ 'ponizej godziny', {{ gametimeGroup[0] }} ],
@@ -105,24 +98,10 @@
 
         var combo = google.visualization.arrayToDataTable([
                 ['', 'agresja', 'uprzykrzanie gry'],
-                ['nigdy nie byłem świadkiem', {{ salt[1] }}, {{ salt[3] }}],
-                ['byłem świadkiem', {{ salt[0] }}, {{ salt[4] }}],
-                ['sam się tak zachowałem', {{ salt[2] }}, {{ salt[5] }}]
+                ['nigdy nie byłem świadkiem', {{ salt[1] }}, {{ salt[5] }}],
+                ['byłem świadkiem', {{ salt[0] }}, {{ salt[3] }}],
+                ['sam się tak zachowałem', {{ salt[2] }}, {{ salt[4] }}]
         ]);
-
-        /*var salt = google.visualization.arrayToDataTable([
-          ['czynnosc', 'Ilosc'],
-          ['nigdy nie byłem świadkiem takiego zachowania ', {{salt[1]}}],
-          ['byłem świadkiem takiego zachowania', {{salt[0]}}],
-          ['zdarzyło mi się w ten sposób zachowywać', {{salt[2]}}],
-        ]);
-
-        var griefing = google.visualization.arrayToDataTable([
-          ['czynnosc', 'Ilosc'],
-          ['nigdy nie byłem świadkiem takiego zachowania ', {{salt[5]}}],
-          ['byłem świadkiem takiego zachowania', {{salt[3]}}],
-          ['zdarzyło mi się w ten sposób zachowywać', {{salt[4]}}],
-        ]);*/
 
         var communication = google.visualization.arrayToDataTable([
           ['Czynnosc', 'Ilosc', {role: 'style'}],
@@ -145,22 +124,19 @@
 
         var options_education = {
             title: 'Wykształcenie',
-            colors: ['#114411', '#9177AA', '#AA7791', '#77AAAA']
+            colors: ['#114411', '#9177AA', '#AA7791', '#77AAAA'],
         };
-
-        /*var options_smp = {
-            title: 'Preferowane typy gier'
-        };*/
 
         var options_gametime = {
           title: 'Czas spędzony na graniu',
           colors: ['#552255', '#114411', '#9177AA', '#AA7791', '#77AAAA'],
+          chartArea: {left: 30, top: 60, width: 'auto', height: 'auto'},
         };
 
         var options_gametitles= {
           title: 'Tytuły gier',
-          //label: 'none'
-            legend: { position: 'none' },
+          legend: { position: 'none' },
+          hAxis:{ textPosition: 'none'},
         };
 
         var options_resign= {
@@ -173,31 +149,26 @@
           },
           pieStartAngle: 100,
             colors: ['#552255', '#114411', '#9177AA', '#AA7791',
-                  '#77AAAA', '#FFBB00']
+                  '#77AAAA', '#FFBB00'],
+            chartArea: {left: 30, top: 60, width: 'auto', height: 'auto'},
         };
 
         var options_resignChoice= {
           title: 'Z czego ankietowani rezygnowali na rzecz gry?',
           legend: { position: 'none' },
+          hAxis:{ textPosition: 'none'},
         };
-         var options_guildWhy= {
+
+        var options_guildWhy= {
           title: 'Czy należysz do gildii?',
-             legend: { position: 'none' },
+          legend: { position: 'none' },
+          hAxis:{ textPosition: 'none'},
         };
-
-        /*var options_salt= {
-          title: 'Czy zdarzyło Ci się być świadkiem agresywnego zachowania graczy ukierunkowanego na inną osobę lub grupę osób?',
-            legend: { position: 'none' },
-        };
-
-        var options_griefing= {
-          title: 'Czy zdarzyło Ci się być świadkiem uprzykrzania gry przez pojedynczą osobę lub grupę osób (np. poprzez przeszkadzanie członkom swojej drużyny, celowe wspieranie drużyny przeciwnej)?',
-            legend: { position: 'none' },
-        };*/
 
          var options_communication= {
              title: 'Komunikacja z ludźmi poznanymi podczas gry',
              legend: {position: 'none'},
+             hAxis:{ textPosition: 'none'},
          };
 
          var options_combo= {
@@ -208,28 +179,22 @@
         var chart_gender = new google.visualization.PieChart(document.getElementById('gender'));
         var chart_age = new google.visualization.PieChart(document.getElementById('age'));
         var chart_education = new google.visualization.PieChart(document.getElementById('education'));
-        //var chart_smp = new google.visualization.PieChart(document.getElementById('smp'));
         var chart_gametime = new google.visualization.PieChart(document.getElementById('gametime'));
         var chart_gametitles = new google.visualization.ColumnChart(document.getElementById('gametitles'));
         var chart_resign = new google.visualization.PieChart(document.getElementById('resign'));
         var chart_resignChoice = new google.visualization.ColumnChart(document.getElementById('resignChoice'));
         var chart_guildWhy = new google.visualization.ColumnChart(document.getElementById('guildWhy'));
-        //var chart_salt = new google.visualization.ColumnChart(document.getElementById('salt'));
-        //var chart_griefing = new google.visualization.ColumnChart(document.getElementById('griefing'));
         var chart_communication = new google.visualization.ColumnChart(document.getElementById('communication'));
-            var chart_combo = new google.visualization.ColumnChart(document.getElementById('combo'));
+        var chart_combo = new google.visualization.ColumnChart(document.getElementById('combo'));
 
         chart_gender.draw(gender, options_gender);
         chart_age.draw(age, options_age);
         chart_education.draw(education, options_education);
-        //chart_smp.draw(smp, options_smp);
         chart_gametime.draw(gametime, options_gametime);
         chart_gametitles.draw(gametitles, options_gametitles);
         chart_resign.draw(resign, options_resign);
         chart_resignChoice.draw(resignChoice, options_resignChoice);
         chart_guildWhy.draw(guildWhy, options_guildWhy);
-        //chart_salt.draw(salt, options_salt);
-        //chart_griefing.draw(griefing, options_griefing);
         chart_communication.draw(communication, options_communication);
         chart_combo.draw(combo, options_combo);
       }
@@ -240,7 +205,7 @@
         <div class="row">
             <div class="col-md-4">
                 <tbody>
-                    <p>W naszej ankiecie wzieło udział aż <b>{{ percentage_female }}%</b> kobiet! To całkiem ciekawy wynik jak na głoszone w świecie gier stereotypy.</p>
+                    <p>W naszej ankiecie wzieło udział <b>{{ percentage_female }}%</b> kobiet! A mówi się, że dziewczyny w ogóle nie grają "w komputer".</p>
                 </tbody>
             </div>
             <div class="col-md-8">
@@ -253,7 +218,7 @@
         <div id="age" style="width: 900px; height: 500px;"></div>
 
         <p> Wiemy już, że graczami głównie są młodzi, ale czy piękni i wykształceni?</p>
-        <div id="education" style="width: 900px; height: 500px;"></div>
+        <div id="education" style="width: 900px; height: 500px;"  ></div>
             </div>
 
         <div class="col-md-12 center">
@@ -262,7 +227,7 @@
             Najbardziej interesujące ze względu na interakcje społeczne są gry przeznaczone dla wielu graczy. <b>{{ percentage_multi }}%</b> badanych wybrało je jako swoje ulubione.
             Pozostałe <b>{{ percentage_singlemulti }}%</b> walczy zarówno w trybie single jak i multi.</p>
         </tbody>
-        <!--div id="smp" style="width: 900px; height: 500px;"></div>-->
+
         <p>Wśród entuzjastów gier multiplayer do najpopularniejszych (oczywiście poza graniem w Herosy w 5 osób przed jednym komputerem) tytułów należą:</p>
         <div id="gametitles"></div>
         </div>
@@ -270,7 +235,7 @@
         <div class="col-md-12 center">
             <br>
         <p>Czas jest ważny, szczególnie dla graczy - przecież zazwyczaj nie można zapauzować gry.
-        Zobaczmy jak zarządzają swoim czasem nasi ankietowani. Poniższy wykres przedstawia ilość godzin dziennie przenzaczonych na granie.</p>
+        Zobaczmy jak zarządzają swoim czasem nasi ankietowani. Spytaliśmy ile godzin dziennie posiwięcają oni na granie.</p>
         <p>Czasem jednak zdarzy się zapomnieć o bożym świecie i zrezygnować z obowiązków na rzecz gry.</p>
         <div class="row">
             <div class="col-md-6">
@@ -283,7 +248,7 @@
         </div>
 
         <div class="col-md-12 center">
-            <p>Gdy taka sytuacja miała miejsce, spytaliśmy z czego najcześciej gracze musieli zrezygnować.</p>
+            <p>Gdy taka sytuacja miała miejsce, zapytaliśmy z czego najcześciej gracze musieli zrezygnować.</p>
                 <div id="resignChoice"></div>
         </div>
 
@@ -293,10 +258,8 @@
             despotycznego lidera-dyktatora, ekonomiczne profity lub też miłość życia. Zapytaliśmy graczy, czy należą do gildii i jaki jest ich
             stosunek do znajomych poznanych w świecie wirtualnym.</p>
                 <div id="guildWhy"></div>
-                <!--<div id="salt"></div>
-                <div id="griefing"></div>-->
-                    <div id="communication"></div>
-                        <br>
+                <div id="communication"></div>
+                <br>
         </div>
 
         <div class="col-md-12 center">
