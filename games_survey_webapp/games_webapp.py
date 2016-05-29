@@ -10,6 +10,7 @@ def welcome():
 def show_form():
     return render_template('form.html')
 
+'''
 @app.route("/raw")
 def show_raw():
     fd = db.session.query(Surveydata).all()
@@ -29,6 +30,7 @@ def show_resign():
 def show_guild():
     fd = db.session.query(Guild).all()
     return render_template('guild.html', surveydata=fd)
+'''
 
 @app.route("/result")
 def show_result():

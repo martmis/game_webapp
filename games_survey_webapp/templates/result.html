@@ -19,13 +19,13 @@
         function drawChart() {
 
         var gender = google.visualization.arrayToDataTable([
-          ['Plec', 'Ilosc'],
+          ['Płeć', 'Ilość'],
           ['kobiety', {{gender[0]}}],
-          ['mezczyzni', {{gender[1]}}],
+          ['mężczyźni', {{gender[1]}}],
         ]);
 
         var age = google.visualization.arrayToDataTable([
-          ['Wiek', 'Ilosc'],
+          ['Wiek', 'Ilość'],
           ['poniżej 15 lat', {{ageGroup[0]}}],
           ['16 - 30 lat', {{ageGroup[1]}}],
           ['31 - 45 lat', {{ageGroup[2]}}],
@@ -34,7 +34,7 @@
         ]);
 
         var education = google.visualization.arrayToDataTable([
-          ['Wykształcenie', 'Ilosc'],
+          ['Wykształcenie', 'Ilość'],
           ['podstawowe', {{educationGroup[0]}}],
           ['zawodowe', {{educationGroup[1]}}],
           ['średnie', {{educationGroup[2]}}],
@@ -42,16 +42,16 @@
         ]);
 
         var gametime = google.visualization.arrayToDataTable([
-      ['Czas spedzony na graniu', 'Ilosc'],
-          [ 'ponizej godziny', {{ gametimeGroup[0] }} ],
+      ['Czas spędzony na graniu', 'Ilość'],
+          [ 'poniżej godziny', {{ gametimeGroup[0] }} ],
           [ '1-2 godziny', {{ gametimeGroup[1] }} ],
           [ '3-4 godziny', {{ gametimeGroup[2] }} ],
           [ '5-6 godziny', {{ gametimeGroup[3] }} ],
-          [ '7 godzin lub wiecej', {{ gametimeGroup[4] }} ],
+          [ '7 godzin lub więcej', {{ gametimeGroup[4] }} ],
         ]);
 
         var gametitles = google.visualization.arrayToDataTable([
-          ['Gra', 'Ilosc graczy', { role: 'annotation' }, { role: 'style'} ],
+          ['Gra', 'Ilość graczy', { role: 'annotation' }, { role: 'style'} ],
           ['Heros of the Storm', {{gt[2]}}, 'HOTS', 'color: #552255' ],
           ['League of Legends', {{gt[1]}},'LoL', 'color: #552255 ; opacity: 0.8 '],
           ['DOTA 2', {{gt[0]}},'DOTA 2', 'color: #114411' ],
@@ -68,7 +68,7 @@
         ]);
 
         var resign = google.visualization.arrayToDataTable([
-          ['Czestotliwosc', 'Ilosc'],
+          ['Częstotliwość', 'Ilość'],
           ['nigdy mi sie to nie zdarzyło', {{resign[0]}}],
           ['rzadziej niż raz w roku', {{resign[1]}}],
           ['rzadko (kilka razy w roku)', {{resign[2]}}],
@@ -78,7 +78,7 @@
         ]);
 
         var resignChoice = google.visualization.arrayToDataTable([
-          ['Powód', 'Ilosc', { role: 'style'}],
+          ['Powód', 'Ilość', { role: 'style'}],
           ['z aktywności fizycznej', {{resignChoice[0]}}, 'color: #552255'],
           ['z czasu spędzonego z rodziną', {{resignChoice[1]}}, 'color: #114411'],
           ['z czasu spędzonego z przyjaciółmi lub znajomymi', {{resignChoice[2]}}, 'color: #9177AA '],
@@ -88,11 +88,11 @@
         ]);
 
         var guildWhy = google.visualization.arrayToDataTable([
-          ['Powód', 'Ilosc', { role: 'style'}],
-          ['nie należe do gildii', {{guildWhy[0]}}, 'color: #552255'],
-          ['tak, ponieważ chce poznać nowe osoby', {{guildWhy[1]}}, 'color: #114411'],
-          ['tak, ponieważ chce znaleźć kompanów do wspólnej rozgrywki', {{guildWhy[2]}}, 'color: #9177AA '],
-          ['tak, z powodu otrzymania benefitów z tytułu członkostwa', {{guildWhy[3]}}, 'color: #AA7791 '],
+          ['Powód', 'Ilość', { role: 'style'}],
+          ['nie należę do gildii', {{guildWhy[0]}}, 'color: #552255'],
+          ['tak, ponieważ chcę poznać nowe osoby', {{guildWhy[1]}}, 'color: #114411'],
+          ['tak, ponieważ chcę znaleźć kompanów do wspólnej rozgrywki', {{guildWhy[2]}}, 'color: #9177AA '],
+          ['tak, z powodu otrzymywania benefitów z tytułu członkostwa', {{guildWhy[3]}}, 'color: #AA7791 '],
           ['inne powody', {{guildWhy[4]}}, 'color: #77AAAA '],
         ]);
 
@@ -100,11 +100,11 @@
                 ['', 'agresja', 'uprzykrzanie gry'],
                 ['nigdy nie byłem świadkiem', {{ salt[1] }}, {{ salt[5] }}],
                 ['byłem świadkiem', {{ salt[0] }}, {{ salt[3] }}],
-                ['sam się tak zachowałem', {{ salt[2] }}, {{ salt[4] }}]
+                ['co najmniej raz mi się zdarzyło', {{ salt[2] }}, {{ salt[4] }}]
         ]);
 
         var communication = google.visualization.arrayToDataTable([
-          ['Czynnosc', 'Ilosc', {role: 'style'}],
+          ['Czynność', 'Ilość', {role: 'style'}],
           ['rozmawiam z ludźmi poznanymi w grze (czat lub komunikacja głosowa)', {{communication[0]}}, 'color: #552255'],
           ['kontaktuję się z poznanymi ludźmi poza grą', {{communication[1]}}, 'color: #114411'],
           ['utrzymuję kontakt z ludźmi poznanymi w grze po zaprzestaniu gry', {{communication[2]}}, 'color: #9177AA '],
@@ -228,14 +228,14 @@
             Pozostałe <b>{{ percentage_singlemulti }}%</b> walczy zarówno w trybie single jak i multi.</p>
         </tbody>
 
-        <p>Wśród entuzjastów gier multiplayer do najpopularniejszych (oczywiście poza graniem w Herosy w 5 osób przed jednym komputerem) tytułów należą:</p>
+        <p>Wśród entuzjastów gier multiplayer do najpopularniejszych (oczywiście poza graniem w Heroesy w pięć osób przed jednym komputerem) tytułów należą:</p>
         <div id="gametitles"></div>
         </div>
 
         <div class="col-md-12 center">
             <br>
         <p>Czas jest ważny, szczególnie dla graczy - przecież zazwyczaj nie można zapauzować gry.
-        Zobaczmy jak zarządzają swoim czasem nasi ankietowani. Spytaliśmy ile godzin dziennie posiwięcają oni na granie.</p>
+        Zobaczmy jak zarządzają swoim czasem nasi ankietowani. Spytaliśmy ile godzin dziennie poświęcają oni na granie.</p>
         <p>Czasem jednak zdarzy się zapomnieć o bożym świecie i zrezygnować z obowiązków na rzecz gry.</p>
         <div class="row">
             <div class="col-md-6">
