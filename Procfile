@@ -1,1 +1,1 @@
-web: gunicorn <games_survey_webapp>:app --log-file -
+web: gunicorn games_webapp:app --log-file -
