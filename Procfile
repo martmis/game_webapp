@@ -1,0 +1,1 @@
+web: gunicorn <game_webapp>:app --log-file -
