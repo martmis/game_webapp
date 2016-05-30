@@ -1,21 +1,6 @@
 # Load required modules, configure database, db class definitions
 from backend_config import *
 
-def count_num_queries(list, classname, maxCounter):
-    counter = 1
-    while (counter <= maxCounter):
-        if(classname == "age"):
-            list.append(Surveydata.query.filter_by(age=counter).count())
-        elif(classname == "education"):
-            list.append(Surveydata.query.filter_by(education=counter).count())
-        elif(classname == "gametime"):
-            list.append(Surveydata.query.filter_by(gametime=counter).count())
-        elif(classname == "resign"):
-            list.append(Surveydata.query.filter_by(resign_freq=counter).count())
-        else:
-            break
-        counter = counter + 1
-    return list
 
 @app.route("/")
 def welcome():
@@ -53,14 +38,18 @@ def show_result():
     males = Surveydata.query.filter_by(gender='M').count()
     gender_list = [females, males]
 
-    ageGroup_list = []
-    count_num_queries(ageGroup_list, "age", 5)
+    ageGroup1 = Surveydata.query.filter_by(age=1).count()
+    ageGroup2 = Surveydata.query.filter_by(age=2).count()
+    ageGroup3 = Surveydata.query.filter_by(age=3).count()
+    ageGroup4 = Surveydata.query.filter_by(age=4).count()
+    ageGroup5 = Surveydata.query.filter_by(age=5).count()
+    ageGroup_list = [ageGroup1, ageGroup2, ageGroup3, ageGroup4, ageGroup5]
 
-    educationGroup_list = []
-    count_num_queries(educationGroup_list, "education", 4)
-
-    gametimeGroup_list = []
-    count_num_queries(gametimeGroup_list, "gametime", 5)
+    educationGroup1 = Surveydata.query.filter_by(education=1).count()
+    educationGroup2 = Surveydata.query.filter_by(education=2).count()
+    educationGroup3 = Surveydata.query.filter_by(education=3).count()
+    educationGroup4 = Surveydata.query.filter_by(education=4).count()
+    educationGroup_list =[educationGroup1, educationGroup2, educationGroup3, educationGroup4]
 
     single = Surveydata.query.filter_by(single_multi='sp').count()
     multi = Surveydata.query.filter_by(single_multi='mp').count()
@@ -89,9 +78,13 @@ def show_result():
     gtOTHER = Games.query.filter_by(other=True).count()
     gt_list = [gtDOTA, gtLOL, gtHOTS, gtCS, gtCOD, gtBF, gtGTA, gtFIFA, gtMC, gtHS, gtSC2, gtWOW, gtOTHER]
 
-    resignGroup_list = []
-    resignGroup_list.append(Surveydata.query.filter_by(resign="no").count())
-    count_num_queries(resignGroup_list, "resign", 5)
+    resignGroup1 = Surveydata.query.filter_by(resign="no").count()
+    resignGroup2 = Surveydata.query.filter_by(resign_freq=1).count()
+    resignGroup3 = Surveydata.query.filter_by(resign_freq=2).count()
+    resignGroup4 = Surveydata.query.filter_by(resign_freq=3).count()
+    resignGroup5 = Surveydata.query.filter_by(resign_freq=4).count()
+    resignGroup6 = Surveydata.query.filter_by(resign_freq=5).count()
+    resignGroup_list = [resignGroup1, resignGroup2, resignGroup3, resignGroup4, resignGroup5, resignGroup6]
 
     resignChoiceGroup1 = Resign.query.filter_by(sport=True).count()
     resignChoiceGroup2 = Resign.query.filter_by(family=True).count()
