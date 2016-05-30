@@ -10,6 +10,7 @@ def welcome():
 def show_form():
     return render_template('form.html')
 
+'''
 @app.route("/raw")
 def show_raw():
     fd = db.session.query(Surveydata).all()
@@ -29,6 +30,7 @@ def show_resign():
 def show_guild():
     fd = db.session.query(Guild).all()
     return render_template('guild.html', surveydata=fd)
+'''
 
 @app.route("/result")
 def show_result():
@@ -47,6 +49,7 @@ def show_result():
     ageGroup4 = Surveydata.query.filter_by(age=4).count()
     ageGroup5 = Surveydata.query.filter_by(age=5).count()
     ageGroup_list = [ageGroup1, ageGroup2, ageGroup3, ageGroup4, ageGroup5]
+    percentage_young = round((((ageGroup1+ageGroup2)/all_records)*100), 2)
 
     educationGroup1 = Surveydata.query.filter_by(education=1).count()
     educationGroup2 = Surveydata.query.filter_by(education=2).count()
@@ -124,7 +127,7 @@ def show_result():
 
     Communication_list =[ShynessFactor, ReallifeContact, Bonding, Meeting]
 
-    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list, percentage_female=percentage_female, percentage_multi=percentage_multi, percentage_single=percentage_single, percentage_singlemulti=percentage_singlemulti)
+    return render_template('result.html', communication=Communication_list, salt=Salt_list, guildWhy=guildWhy_list, resignChoice=resignChoiceGroup_list, resign=resignGroup_list,  gt=gt_list, data=fd_list, gender=gender_list, ageGroup=ageGroup_list, educationGroup=educationGroup_list, smp=smp_list, gametimeGroup=gametimeGroup_list, percentage_female=percentage_female, percentage_multi=percentage_multi, percentage_single=percentage_single, percentage_singlemulti=percentage_singlemulti, percentage_young=percentage_young)
 
 
 def isFieldNA(fieldname, resultType = 'string'):
